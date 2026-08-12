@@ -4,7 +4,7 @@ import environ
 env = environ.Env()
 
 DEBUG = False
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
 
 # Database
 # Use PostgreSQL from Railway via DATABASE_URL
