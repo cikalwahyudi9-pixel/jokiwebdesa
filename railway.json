@@ -1,1 +1,1 @@
-{"build": {"builder": "NIXPACKS"}, "deploy": {"startCommand": "python manage.py collectstatic --noinput && gunicorn config.wsgi"}}
+{"build": {"builder": "NIXPACKS"}, "deploy": {"startCommand": "python manage.py collectstatic --noinput && gunicorn config.wsgi -b 0.0.0.0:"}}
