@@ -22,3 +22,5 @@ CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=False)
 # Static files served by WhiteNoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
