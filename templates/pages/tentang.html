@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Tentang Website{% endblock %}
+{% block meta_description %}Tentang Jelajah Sumberagung — Platform informasi mandiri yang dikembangkan sebagai luaran program KKN Universitas Diponegoro 2026 di Desa Sumberagung.{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">Tentang Website</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">Tentang Jelajah Sumberagung</h1>
+    <p class="page-hero-sub">Transparansi tentang website ini dan tujuannya</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        {# Disclaimer Resmi #}
+        <div class="disclaimer-banner mb-4">
+          <span class="disclaimer-banner-icon"><i class="bi bi-exclamation-triangle"></i></span>
+          <div>
+            <strong>Perhatian:</strong><br>
+            {{ disclaimer_resmi }}
+          </div>
+        </div>
+
+        <h2 class="section-title">Apa itu Jelajah Sumberagung?</h2>
+        <div class="divider"></div>
+        <p>
+          <strong>Jelajah Sumberagung</strong> adalah platform informasi digital mandiri
+          yang dikembangkan sebagai salah satu luaran program Kuliah Kerja Nyata (KKN)
+          Universitas Diponegoro di Desa Sumberagung, Kecamatan Weleri, Kabupaten Kendal,
+          Jawa Tengah, pada tahun 2026.
+        </p>
+        <p>
+          Website ini hadir sebagai <em>ruang digital untuk mengenal Sumberagung</em> —
+          menampilkan profil desa, potensi lokal, UMKM mitra, kegiatan, dokumentasi
+          program pemberdayaan, dan materi edukasi yang dapat diakses oleh siapapun.
+        </p>
+
+        <h3 style="font-family:var(--font-heading); font-size:1.4rem; margin-top:2rem;">
+          Tujuan Website
+        </h3>
+        <ul class="mt-2" style="line-height:2;">
+          <li>Memperkenalkan Desa Sumberagung kepada masyarakat yang lebih luas</li>
+          <li>Menampilkan potensi desa secara menarik dan informatif</li>
+          <li>Mempromosikan UMKM yang berpartisipasi dalam program pendampingan KKN</li>
+          <li>Mengarsipkan hasil program pemberdayaan masyarakat</li>
+          <li>Menyediakan artikel dan materi edukasi yang dapat diakses kembali</li>
+          <li>Menjadi wadah digital yang dapat dikembangkan setelah KKN selesai</li>
+        </ul>
+
+        <h3 style="font-family:var(--font-heading); font-size:1.4rem; margin-top:2rem;">
+          Yang Tidak Disediakan Website Ini
+        </h3>
+        <ul class="mt-2" style="line-height:2; color:var(--color-text-muted);">
+          <li>Layanan administrasi pemerintahan desa</li>
+          <li>Pembuatan surat secara online</li>
+          <li>Sistem kependudukan</li>
+          <li>Sistem pelayanan Posyandu lengkap</li>
+          <li>Database keuangan desa</li>
+        </ul>
+
+        <h3 style="font-family:var(--font-heading); font-size:1.4rem; margin-top:2rem;">
+          Tentang Data di Website Ini
+        </h3>
+        <div class="disclaimer-banner" style="margin-top:1rem;">
+          <span class="disclaimer-banner-icon"><i class="bi bi-info-circle"></i></span>
+          <div>
+            <strong>Data UMKM:</strong> Data yang ditampilkan merupakan UMKM yang berpartisipasi
+            dalam program pendampingan KKN, bukan daftar seluruh UMKM di Desa Sumberagung.
+          </div>
+        </div>
+        <div class="disclaimer-banner" style="margin-top:0.75rem;">
+          <span class="disclaimer-banner-icon"><i class="bi bi-info-circle"></i></span>
+          <div>
+            <strong>Data Kesehatan:</strong> Data yang ditampilkan di halaman Insight merupakan
+            data agregat & anonim dari kegiatan skrining. Tidak ada data individual yang ditampilkan.
+          </div>
+        </div>
+
+        <h3 style="font-family:var(--font-heading); font-size:1.4rem; margin-top:2rem;">
+          Pengembang
+        </h3>
+        <p>
+          Website ini dikembangkan oleh Tim KKN Universitas Diponegoro 2026
+          di Desa Sumberagung, Kecamatan Weleri, Kabupaten Kendal, Jawa Tengah.
+        </p>
+        <p style="font-size:0.88rem; color:var(--color-text-muted);">
+          Jika website diserahkan kepada pihak lain setelah periode KKN berakhir,
+          bagian ini dapat diperbarui melalui panel admin.
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

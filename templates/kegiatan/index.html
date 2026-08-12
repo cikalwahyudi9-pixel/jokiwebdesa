@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block title %}Kegiatan{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">Kegiatan</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">Kegiatan & Agenda</h1>
+    <p class="page-hero-sub">Kegiatan masyarakat dan program di Desa Sumberagung</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+
+    {# Kegiatan Terkini/Mendatang #}
+    {% if upcoming %}
+    <h2 class="section-title" style="font-size:1.4rem; margin-bottom:1.5rem;">Kegiatan Terkini</h2>
+    <div class="row g-4 mb-5">
+      {% for kegiatan in upcoming %}
+      <div class="col-md-6">
+        <div class="card-custom d-flex gap-3 p-3 h-100">
+          {% if kegiatan.foto %}
+          <img src="{{ kegiatan.foto.url }}" alt="{{ kegiatan.judul }}"
+               style="width:90px; height:90px; object-fit:cover; border-radius:0.75rem; flex-shrink:0;" loading="lazy">
+          {% else %}
+          <div style="width:90px; height:90px; background:rgba(46,125,50,0.1); border-radius:0.75rem;
+                      display:flex; align-items:center; justify-content:center; font-size:2rem; flex-shrink:0;"><i class="bi bi-calendar-event"></i></div>
+          {% endif %}
+          <div>
+            <span class="card-category-badge">{{ kegiatan.get_kategori_display }}</span>
+            <h3 style="font-family:var(--font-heading); font-size:1rem; margin-bottom:0.3rem;">{{ kegiatan.judul }}</h3>
+            <div class="card-meta flex-wrap">
+              <span><i class="bi bi-calendar3"></i> {{ kegiatan.tanggal|date:"j M Y" }}</span>
+              {% if kegiatan.waktu %}<span><i class="bi bi-clock"></i> {{ kegiatan.waktu|time:"H:i" }}</span>{% endif %}
+              {% if kegiatan.lokasi %}<span><i class="bi bi-geo-alt"></i> {{ kegiatan.lokasi }}</span>{% endif %}
+            </div>
+            {% if kegiatan.deskripsi %}
+            <p style="font-size:0.82rem; color:var(--color-text-muted); margin-top:0.4rem; margin-bottom:0;">
+              {{ kegiatan.deskripsi|truncatewords:15 }}
+            </p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {# Arsip Kegiatan #}
+    {% if arsip %}
+    <h2 class="section-title" style="font-size:1.4rem; margin-bottom:1.5rem; color:var(--color-text-muted);">
+      Arsip Kegiatan
+    </h2>
+    <div class="row g-3">
+      {% for kegiatan in arsip %}
+      <div class="col-md-6">
+        <div class="card-custom d-flex gap-3 p-3" style="opacity:0.85;">
+          <div style="min-width:54px; text-align:center; background:rgba(46,125,50,0.08);
+                      border-radius:0.75rem; padding:0.75rem 0.5rem;">
+            <div style="font-size:1.1rem; font-weight:700; color:var(--color-primary);">
+              {{ kegiatan.tanggal|date:"j" }}
+            </div>
+            <div style="font-size:0.7rem; text-transform:uppercase; color:var(--color-text-muted);">
+              {{ kegiatan.tanggal|date:"M" }}
+            </div>
+          </div>
+          <div>
+            <span class="card-category-badge">{{ kegiatan.get_kategori_display }}</span>
+            <h3 style="font-family:var(--font-heading); font-size:0.95rem; margin-bottom:0.25rem;">{{ kegiatan.judul }}</h3>
+            {% if kegiatan.lokasi %}<small class="text-muted"><i class="bi bi-geo-alt"></i> {{ kegiatan.lokasi }}</small>{% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if not upcoming and not arsip %}
+    <div class="placeholder-content" style="padding:5rem 2rem;">
+      <div class="placeholder-icon"><i class="bi bi-calendar-event"></i></div>
+      <span class="placeholder-label">KEGIATAN BELUM TERSEDIA</span>
+      <p class="mt-2 mb-0" style="font-size:0.88rem;">Data kegiatan akan ditambahkan oleh tim pengelola.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}

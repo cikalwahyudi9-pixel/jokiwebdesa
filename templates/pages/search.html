@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}Pencarian — {{ query }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <h1 class="page-hero-title">Hasil Pencarian</h1>
+    <p class="page-hero-sub">{% if query %}Menampilkan hasil untuk: <strong>"{{ query }}"</strong>{% else %}Cari informasi di Jelajah Sumberagung{% endif %}</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    {# Search Form #}
+    <form method="get" action="{% url 'pages:search' %}" class="mb-5">
+      <div class="d-flex gap-2" style="max-width:600px;">
+        <input type="text" name="q" value="{{ query }}" placeholder="Cari artikel, UMKM, potensi..."
+               class="form-control" style="border-radius:var(--radius-sm); font-size:0.95rem; padding:0.7rem 1rem;"
+               autofocus>
+        <button type="submit" class="btn-green" style="white-space:nowrap;">
+          <i class="bi bi-search"></i> Cari
+        </button>
+      </div>
+    </form>
+
+    {% if query %}
+      {% if total > 0 %}
+      <p class="text-muted mb-4" style="font-size:0.9rem;">
+        Ditemukan <strong>{{ total }} hasil</strong> untuk kata kunci "<strong>{{ query }}</strong>"
+      </p>
+
+      {% for kategori, data in results.items %}
+        {% if data.items %}
+        <div class="mb-5">
+          <h2 style="font-family:var(--font-heading); font-size:1.1rem; color:var(--color-primary); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+            <i class="bi bi-folder2-open"></i> {{ kategori }}
+            <span style="font-size:0.8rem; background:rgba(46,125,50,0.1); color:var(--color-primary); padding:0.1rem 0.5rem; border-radius:1rem; font-weight:600;">{{ data.items|length }}</span>
+          </h2>
+          <div class="row g-3">
+            {% for item in data.items %}
+            <div class="col-md-6 col-lg-4">
+              <div class="card-custom p-3 d-flex flex-column gap-2">
+                {% if item.kategori %}<span class="card-category-badge">{{ item.kategori }}</span>{% endif %}
+                {% if item.kategori_obj %}<span class="card-category-badge">{{ item.kategori_obj.nama }}</span>{% endif %}
+                <h3 style="font-family:var(--font-heading); font-size:0.95rem; margin:0;">
+                  {% if data.url_name %}
+                    <a href="{% url data.url_name item.slug %}" style="color:var(--color-text); text-decoration:none;">
+                      {{ item.judul|default:item.nama_usaha|default:item.judul }}
+                    </a>
+                  {% else %}
+                    {{ item.judul|default:item.nama_usaha }}
+                  {% endif %}
+                </h3>
+                {% if item.deskripsi %}
+                <p style="font-size:0.82rem; color:var(--color-text-muted); margin:0;">{{ item.deskripsi|truncatewords:15 }}</p>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+      {% else %}
+      <div class="placeholder-content" style="padding:5rem 2rem;">
+        <div class="placeholder-icon">🔍</div>
+        <span class="placeholder-label">TIDAK ADA HASIL</span>
+        <p class="mt-2 mb-0" style="font-size:0.9rem;">
+          Kata kunci "<strong>{{ query }}</strong>" tidak ditemukan. Coba kata kunci lain.
+        </p>
+      </div>
+      {% endif %}
+
+    {% else %}
+    <div class="text-center" style="padding:3rem 0; color:var(--color-text-muted);">
+      <i class="bi bi-search" style="font-size:3rem; opacity:0.3;"></i>
+      <p class="mt-3">Masukkan kata kunci di kotak pencarian di atas untuk mulai mencari.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

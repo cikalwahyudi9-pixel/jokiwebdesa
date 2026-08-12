@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DesaDigital - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined', sans-serif;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#adc6ff",
+                        "on-tertiary-container": "#1d17b2",
+                        "surface-container-high": "#242c27",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-primary-container": "#00422b",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-error": "#690005",
+                        "outline-variant": "#3c4a42",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "surface-variant": "#2f3632",
+                        "surface-tint": "#4edea3",
+                        "surface-container-lowest": "#09100c",
+                        "on-surface-variant": "#bbcabf",
+                        "on-tertiary-fixed": "#07006c",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#2b322d",
+                        "surface": "#0e1511",
+                        "inverse-primary": "#006c49",
+                        "on-secondary": "#002e6a",
+                        "surface-container-highest": "#2f3632",
+                        "on-tertiary": "#1000a9",
+                        "tertiary-container": "#9699ff",
+                        "surface-bright": "#343b36",
+                        "background": "#0e1511",
+                        "error-container": "#93000a",
+                        "surface-dim": "#0e1511",
+                        "on-primary": "#003824",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-secondary-fixed-variant": "#004395",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "outline": "#86948a",
+                        "inverse-surface": "#dde4dd",
+                        "primary-container": "#10b981",
+                        "tertiary": "#c0c1ff",
+                        "surface-container-low": "#161d19",
+                        "on-background": "#dde4dd",
+                        "on-secondary-fixed": "#001a42",
+                        "tertiary-fixed": "#e1e0ff",
+                        "primary": "#4edea3",
+                        "on-secondary-container": "#e6ecff",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container": "#1a211d",
+                        "on-surface": "#dde4dd",
+                        "on-primary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#005236",
+                        "secondary-container": "#0566d9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "container-max": "1440px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Geist"],
+                        "headline-md-mobile": ["Geist"],
+                        "headline-sm": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "label-md": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "title-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "body-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant shadow-sm h-16 px-lg flex justify-between items-center hidden md:flex transition-all">
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-all p-sm rounded-full hover:bg-surface-container-high focus:outline-none">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md" href="#">Lihat Website</a>
+</div>
+<div class="flex items-center gap-md flex-1 max-w-2xl px-xl">
+<div class="relative w-full max-w-xs">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-high border-outline-variant text-on-surface rounded-full py-2 pl-10 pr-4 focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm" placeholder="Cari Artikel..." type="text"/>
+</div>
+<div class="relative w-full max-w-xs">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-high border-outline-variant text-on-surface rounded-full py-2 pl-10 pr-4 focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm" placeholder="Cari Umkm Mitra..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="text-on-surface-variant hover:text-primary transition-all p-sm rounded-full hover:bg-surface-container-high focus:outline-none relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all p-sm rounded-full hover:bg-surface-container-high focus:outline-none">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant ml-sm cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">person</span>
+</div>
+</div>
+</header>
+<!-- Side Navigation Bar -->
+<aside class="w-[280px] fixed h-full left-0 top-0 bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant shadow-none hidden md:flex flex-col gap-base p-md z-50 overflow-y-auto">
+<div class="flex items-center gap-sm px-sm py-md mb-md border-b border-outline-variant">
+<div class="bg-primary text-on-primary w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl">A</div>
+<h1 class="font-display-lg text-display-lg font-bold text-primary tracking-tight" style="font-size: 24px; line-height: 28px;">Admin Panel</h1>
+</div>
+<nav class="flex flex-col gap-xs flex-1">
+<a class="flex items-center gap-md px-md py-sm text-primary font-bold bg-surface-container-high rounded-lg mb-4" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Menu Groups -->
+<div class="mb-4">
+<h3 class="px-sm text-on-surface-variant font-label-sm uppercase tracking-wider mb-2">Profil</h3>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-sm">circle</span>
+<span>Fasilitas Desa</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Profil Desa</span>
+</a>
+</div>
+<div class="mb-4">
+<h3 class="px-sm text-on-surface-variant font-label-sm uppercase tracking-wider mb-2">Potensi</h3>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-sm">animated_images</span>
+<span>Item Potensi</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-sm">circle</span>
+<span>Kategori Potensi</span>
+</a>
+</div>
+<div class="mb-4">
+<h3 class="px-sm text-on-surface-variant font-label-sm uppercase tracking-wider mb-2">Umkm</h3>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-sm">circle</span>
+<span>Kategori UMKM</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-sm">storefront</span>
+<span>UMKM Mitra</span>
+</a>
+</div>
+<div class="mb-4">
+<h3 class="px-sm text-on-surface-variant font-label-sm uppercase tracking-wider mb-2">Artikel</h3>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-sm">article</span>
+<span>Artikel</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined text-sm">circle</span>
+<span>Kategori Artikel</span>
+</a>
+</div>
+<!-- Full List from JSON (Hidden visually but logically present for completeness, keeping it tidy as per reference image focus) -->
+<div class="mt-auto border-t border-outline-variant pt-4 hidden">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">photo_library</span><span>Galeri</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">volunteer_activism</span><span>Program</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">school</span><span>Edukasi</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">health_and_safety</span><span>Insight</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_month</span><span>Kegiatan</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span><span>Autentikasi</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-[280px] pt-16 min-h-screen bg-surface flex flex-col p-margin-mobile md:p-margin-desktop gap-xl">
+<!-- Header Section -->
+<div class="flex justify-between items-end border-b border-outline-variant pb-md">
+<h2 class="font-display-lg text-display-lg text-on-surface m-0">Dashboard</h2>
+<div class="flex items-center gap-sm text-sm font-label-md text-on-surface-variant">
+<a class="text-secondary hover:text-secondary-fixed transition-colors" href="#">Beranda</a>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface">Dashboard</span>
+</div>
+</div>
+<!-- Dashboard Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Main Cards Column -->
+<div class="lg:col-span-2 flex flex-col gap-gutter">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Profil Card -->
+<div class="bg-surface-container rounded-lg border border-outline-variant overflow-hidden flex flex-col shadow-sm">
+<div class="bg-surface-container-highest px-lg py-md border-b border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm text-on-surface m-0 opacity-80">Profil</h3>
+</div>
+<div class="flex-1 p-0">
+<div class="flex justify-between items-center px-lg py-sm border-b border-outline-variant hover:bg-surface-container-high transition-colors group">
+<span class="font-body-sm text-secondary group-hover:text-secondary-fixed transition-colors">Fasilitas Desa</span>
+<div class="flex gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md px-4 py-1.5 rounded-full hover:bg-primary transition-colors flex items-center justify-center min-w-[80px]">Tambah</button>
+<button class="bg-secondary-container text-on-secondary-container font-label-md px-4 py-1.5 rounded-full hover:bg-secondary transition-colors flex items-center justify-center min-w-[70px]">Ubah</button>
+</div>
+</div>
+<div class="flex justify-between items-center px-lg py-sm hover:bg-surface-container-high transition-colors group">
+<span class="font-body-sm text-secondary group-hover:text-secondary-fixed transition-colors">Profil Desa</span>
+<div class="flex gap-sm">
+<button class="bg-secondary-container text-on-secondary-container font-label-md px-4 py-1.5 rounded-full hover:bg-secondary transition-colors flex items-center justify-center min-w-[70px]">Ubah</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Program Card -->
+<div class="bg-surface-container rounded-lg border border-outline-variant overflow-hidden flex flex-col shadow-sm">
+<div class="bg-surface-container-highest px-lg py-md border-b border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm text-on-surface m-0 opacity-80">Program</h3>
+</div>
+<div class="flex-1 p-0">
+<div class="flex justify-between items-center px-lg py-sm hover:bg-surface-container-high transition-colors group">
+<span class="font-body-sm text-secondary group-hover:text-secondary-fixed transition-colors">Program Pemberdayaan</span>
+<div class="flex gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md px-4 py-1.5 rounded-full hover:bg-primary transition-colors flex items-center justify-center min-w-[80px]">Tambah</button>
+<button class="bg-secondary-container text-on-secondary-container font-label-md px-4 py-1.5 rounded-full hover:bg-secondary transition-colors flex items-center justify-center min-w-[70px]">Ubah</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Potensi Card -->
+<div class="bg-surface-container rounded-lg border border-outline-variant overflow-hidden flex flex-col shadow-sm">
+<div class="bg-surface-container-highest px-lg py-md border-b border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm text-on-surface m-0 opacity-80">Potensi</h3>
+</div>
+<div class="flex-1 p-0">
+<div class="flex justify-between items-center px-lg py-sm border-b border-outline-variant hover:bg-surface-container-high transition-colors group">
+<span class="font-body-sm text-secondary group-hover:text-secondary-fixed transition-colors">Item Potensi</span>
+<div class="flex gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md px-4 py-1.5 rounded-full hover:bg-primary transition-colors flex items-center justify-center min-w-[80px]">Tambah</button>
+<button class="bg-secondary-container text-on-secondary-container font-label-md px-4 py-1.5 rounded-full hover:bg-secondary transition-colors flex items-center justify-center min-w-[70px]">Ubah</button>
+</div>
+</div>
+<div class="flex justify-between items-center px-lg py-sm hover:bg-surface-container-high transition-colors group">
+<span class="font-body-sm text-secondary group-hover:text-secondary-fixed transition-colors">Kategori Potensi</span>
+<div class="flex gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md px-4 py-1.5 rounded-full hover:bg-primary transition-colors flex items-center justify-center min-w-[80px]">Tambah</button>
+<button class="bg-secondary-container text-on-secondary-container font-label-md px-4 py-1.5 rounded-full hover:bg-secondary transition-colors flex items-center justify-center min-w-[70px]">Ubah</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Edukasi Card -->
+<div class="bg-surface-container rounded-lg border border-outline-variant overflow-hidden flex flex-col shadow-sm">
+<div class="bg-surface-container-highest px-lg py-md border-b border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm text-on-surface m-0 opacity-80">Edukasi</h3>
+</div>
+<div class="flex-1 p-0">
+<div class="flex justify-between items-center px-lg py-sm border-b border-outline-variant hover:bg-surface-container-high transition-colors group">
+<span class="font-body-sm text-secondary group-hover:text-secondary-fixed transition-colors">Item Edukasi</span>
+<div class="flex gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md px-4 py-1.5 rounded-full hover:bg-primary transition-colors flex items-center justify-center min-w-[80px]">Tambah</button>
+<button class="bg-secondary-container text-on-secondary-container font-label-md px-4 py-1.5 rounded-full hover:bg-secondary transition-colors flex items-center justify-center min-w-[70px]">Ubah</button>
+</div>
+</div>
+<div class="flex justify-between items-center px-lg py-sm hover:bg-surface-container-high transition-colors group">
+<span class="font-body-sm text-secondary group-hover:text-secondary-fixed transition-colors">Kategori Edukasi</span>
+<div class="flex gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md px-4 py-1.5 rounded-full hover:bg-primary transition-colors flex items-center justify-center min-w-[80px]">Tambah</button>
+<button class="bg-secondary-container text-on-secondary-container font-label-md px-4 py-1.5 rounded-full hover:bg-secondary transition-colors flex items-center justify-center min-w-[70px]">Ubah</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Insight Card -->
+<div class="bg-surface-container rounded-lg border border-outline-variant overflow-hidden flex flex-col shadow-sm md:col-span-2 lg:col-span-1">
+<div class="bg-surface-container-highest px-lg py-md border-b border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm text-on-surface m-0 opacity-80">Insight</h3>
+</div>
+<div class="flex-1 p-0">
+<div class="flex justify-between items-center px-lg py-sm hover:bg-surface-container-high transition-colors group">
+<span class="font-body-sm text-secondary group-hover:text-secondary-fixed transition-colors">Event Kesehatan</span>
+<div class="flex gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md px-4 py-1.5 rounded-full hover:bg-primary transition-colors flex items-center justify-center min-w-[80px]">Tambah</button>
+<button class="bg-secondary-container text-on-secondary-container font-label-md px-4 py-1.5 rounded-full hover:bg-secondary transition-colors flex items-center justify-center min-w-[70px]">Ubah</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Umkm Card -->
+<div class="bg-surface-container rounded-lg border border-outline-variant overflow-hidden flex flex-col shadow-sm md:col-span-2 lg:col-span-1">
+<div class="bg-surface-container-highest px-lg py-md border-b border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm text-on-surface m-0 opacity-80">Umkm</h3>
+</div>
+<div class="flex-1 p-0">
+<div class="flex justify-between items-center px-lg py-sm border-b border-outline-variant hover:bg-surface-container-high transition-colors group">
+<span class="font-body-sm text-secondary group-hover:text-secondary-fixed transition-colors">Kategori UMKM</span>
+<div class="flex gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md px-4 py-1.5 rounded-full hover:bg-primary transition-colors flex items-center justify-center min-w-[80px]">Tambah</button>
+<button class="bg-secondary-container text-on-secondary-container font-label-md px-4 py-1.5 rounded-full hover:bg-secondary transition-colors flex items-center justify-center min-w-[70px]">Ubah</button>
+</div>
+</div>
+<div class="flex justify-between items-center px-lg py-sm hover:bg-surface-container-high transition-colors group">
+<span class="font-body-sm text-secondary group-hover:text-secondary-fixed transition-colors">UMKM Mitra</span>
+<div class="flex gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md px-4 py-1.5 rounded-full hover:bg-primary transition-colors flex items-center justify-center min-w-[80px]">Tambah</button>
+<button class="bg-secondary-container text-on-secondary-container font-label-md px-4 py-1.5 rounded-full hover:bg-secondary transition-colors flex items-center justify-center min-w-[70px]">Ubah</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar / Recent Actions -->
+<div class="lg:col-span-1 flex flex-col gap-md">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Tindakan terbaru</h2>
+<div class="bg-surface-container-low rounded-lg border border-outline-variant p-lg min-h-[200px] flex items-center justify-center shadow-sm">
+<p class="font-body-md text-on-surface-variant text-center opacity-70">Tidak ada yang tersedia</p>
+</div>
+</div>
+</div>
+</main>
+</body></html>

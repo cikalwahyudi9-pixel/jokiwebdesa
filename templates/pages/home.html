@@ -1,0 +1,426 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Beranda{% endblock %}
+
+{% block content %}
+
+{# ===== HERO SECTION ===== #}
+<section class="hero-section" id="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7 hero-content">
+        <span class="hero-badge">
+          <i class="bi bi-geo-alt-fill me-1"></i>
+          Desa Sumberagung, Weleri, Kendal
+        </span>
+        <h1 class="hero-title">
+          Jelajah<br><span class="accent">Sumberagung</span>
+        </h1>
+        <p class="hero-tagline">Satu Ruang untuk Mengenal Sumberagung</p>
+        <p class="hero-desc">
+          Mengenal lebih dekat potensi, cerita, masyarakat, dan berbagai kegiatan
+          pemberdayaan di Desa Sumberagung, Jawa Tengah.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="{% url 'potensi:index' %}" class="btn-primary-custom">
+            <i class="bi bi-compass-fill"></i> Jelajahi Sumberagung
+          </a>
+          <a href="{% url 'potensi:index' %}" class="btn-outline-custom">
+            <i class="bi bi-leaf"></i> Lihat Potensi
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ===== VIDEO PROFIL SECTION ===== #}
+<section class="section-py section-bg-alt" id="video-profil">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5">
+        <span class="section-label">Video Profil</span>
+        <h2 class="section-title">Mengenal Sumberagung</h2>
+        <div class="divider"></div>
+        <p class="text-muted">
+          Saksikan keindahan dan keunikan Desa Sumberagung melalui video profil
+          yang menampilkan potensi alam, budaya, dan kehidupan masyarakatnya.
+        </p>
+        <a href="{% url 'pages:video_profil' %}" class="btn-green mt-3">
+          <i class="bi bi-play-circle-fill"></i> Tonton Video Profil
+        </a>
+      </div>
+      <div class="col-lg-7">
+        {% if profil.video_youtube_url %}
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 1rem; box-shadow: var(--shadow-sm);">
+          <iframe
+            src="{{ profil.get_youtube_embed_url }}"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+            title="Video Profil Desa Sumberagung"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+        {% elif profil.video_file %}
+        <video width="100%" controls style="border-radius: 1rem; box-shadow: var(--shadow-sm); display: block;">
+          <source src="{{ profil.video_file.url }}" type="video/mp4">
+          Browser Anda tidak mendukung pemutaran video.
+        </video>
+        {% else %}
+        <div class="placeholder-content" style="border-radius:1rem; padding:4rem 2rem;">
+          <div class="placeholder-icon">🎬</div>
+          <span class="placeholder-label">MENUNGGU VIDEO</span>
+          <p class="mb-0" style="font-size:0.9rem;">
+            Video profil desa akan ditampilkan di sini setelah produksi selesai.
+          </p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ===== SEKILAS SUMBERAGUNG ===== #}
+<section class="section-py" id="sekilas">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-label">Tentang Desa</span>
+      <h2 class="section-title">Sekilas Sumberagung</h2>
+      <p class="section-desc">
+        Desa yang terletak di kecamatan Weleri, Kabupaten Kendal, Jawa Tengah —
+        dengan potensi pertanian, peternakan, UMKM lokal, dan kekayaan budaya.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <i class="bi bi-geo-alt-fill text-primary-custom fs-3 mb-2"></i>
+          <span class="stat-number" style="font-size:1.1rem;">Weleri</span>
+          <span class="stat-label">Kecamatan</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <i class="bi bi-building text-primary-custom fs-3 mb-2"></i>
+          <span class="stat-number" style="font-size:1.1rem;">Kendal</span>
+          <span class="stat-label">Kabupaten</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <i class="bi bi-tree-fill text-primary-custom fs-3 mb-2"></i>
+          <span class="stat-number"><i class="bi bi-tree"></i></span>
+          <span class="stat-label">Pertanian & Peternakan</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <i class="bi bi-shop text-primary-custom fs-3 mb-2"></i>
+          <span class="stat-number"><i class="bi bi-shop"></i></span>
+          <span class="stat-label">UMKM Lokal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="{% url 'profil:index' %}" class="btn-outline-green">
+        <i class="bi bi-info-circle"></i> Lihat Profil Lengkap
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ===== POTENSI UNGGULAN ===== #}
+{% if potensi_kategori %}
+<section class="section-py section-bg-alt" id="potensi-unggulan">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-label">Potensi Desa</span>
+      <h2 class="section-title">Potensi Unggulan</h2>
+      <p class="section-desc">
+        Berbagai potensi yang menjadi keunggulan Desa Sumberagung
+      </p>
+    </div>
+
+    <div class="row g-4">
+      {% for kategori in potensi_kategori %}
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+        <a href="{% url 'potensi:detail' kategori.slug %}" class="potensi-card">
+          <div class="potensi-icon">
+            {% if kategori.ikon %}
+              <i class="{{ kategori.ikon }}"></i>
+            {% else %}
+              <i class="bi bi-tree"></i>
+            {% endif %}
+          </div>
+          <h3 class="potensi-card-title">{{ kategori.nama }}</h3>
+          <p class="potensi-card-desc">{{ kategori.deskripsi_singkat|truncatewords:15 }}</p>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="{% url 'potensi:index' %}" class="btn-green">
+        <i class="bi bi-grid-3x3-gap"></i> Lihat Semua Potensi
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# ===== UMKM PILIHAN ===== #}
+<section class="section-py" id="umkm-pilihan">
+  <div class="container">
+    <div class="row align-items-end mb-4">
+      <div class="col-md-8">
+        <span class="section-label">Usaha Lokal</span>
+        <h2 class="section-title mb-2">UMKM Pilihan</h2>
+        <p class="text-muted mb-0">
+          Mengenal produk dan usaha lokal dari UMKM yang berpartisipasi dalam
+          program pendampingan KKN.
+        </p>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <a href="{% url 'umkm:index' %}" class="btn-outline-green">
+          Lihat UMKM <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    {% if umkm_featured %}
+    <div class="row g-4">
+      {% for umkm in umkm_featured %}
+      <div class="col-lg-3 col-md-6">
+        <div class="umkm-card">
+          {% if umkm.foto_utama %}
+          <a href="{% url 'umkm:detail' umkm.slug %}">
+            <img src="{{ umkm.foto_utama.url }}" alt="{{ umkm.nama_usaha }}"
+                 class="umkm-card-img" loading="lazy">
+          </a>
+          {% else %}
+          <div style="height:180px; background:linear-gradient(135deg,#e8f5e9,#f1f8e9);
+                      display:flex; align-items:center; justify-content:center; font-size:3rem;">
+            <i class="bi bi-shop"></i>
+          </div>
+          {% endif %}
+          <div class="umkm-card-body">
+            {% if umkm.kategori %}
+            <span class="card-category-badge">{{ umkm.kategori.nama }}</span>
+            {% endif %}
+            <h3 class="umkm-card-name">{{ umkm.nama_usaha }}</h3>
+            {% if umkm.produk_unggulan %}
+            <p class="umkm-card-produk">{{ umkm.produk_unggulan|truncatewords:8 }}</p>
+            {% endif %}
+            <a href="{% url 'umkm:detail' umkm.slug %}" class="btn-green" style="font-size:0.82rem; padding:0.4rem 1rem;">
+              Lihat Detail <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="placeholder-content">
+      <div class="placeholder-icon"><i class="bi bi-shop"></i></div>
+      <span class="placeholder-label">DATA UMKM BELUM TERSEDIA</span>
+      <p class="mb-0 mt-2" style="font-size:0.88rem;">
+        Data UMKM mitra program KKN sedang dalam proses pengumpulan.
+      </p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{# ===== CERITA & ARTIKEL ===== #}
+<section class="section-py section-bg-alt" id="artikel-terbaru">
+  <div class="container">
+    <div class="row align-items-end mb-4">
+      <div class="col-md-8">
+        <span class="section-label">Cerita & Artikel</span>
+        <h2 class="section-title mb-2">Artikel Terbaru</h2>
+        <p class="text-muted mb-0">Informasi dan cerita terkini seputar Desa Sumberagung</p>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <a href="{% url 'artikel:index' %}" class="btn-outline-green">
+          Semua Artikel <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    {% if artikel_terbaru %}
+    <div class="row g-4">
+      {% for artikel in artikel_terbaru %}
+      <div class="col-lg-3 col-md-6">
+        <article class="card-custom h-100 d-flex flex-column">
+          {% if artikel.thumbnail %}
+          <div class="card-img-wrap">
+            <a href="{% url 'artikel:detail' artikel.slug %}">
+              <img src="{{ artikel.thumbnail.url }}" alt="{{ artikel.judul }}" loading="lazy">
+            </a>
+          </div>
+          {% endif %}
+          <div class="card-body-custom d-flex flex-column flex-grow-1">
+            {% if artikel.kategori %}
+            <div><span class="card-category-badge">{{ artikel.kategori.nama }}</span></div>
+            {% endif %}
+            <h3 class="card-title-custom mb-3">
+              <a href="{% url 'artikel:detail' artikel.slug %}" class="text-dark">
+                {{ artikel.judul }}
+              </a>
+            </h3>
+            <div class="card-meta mt-auto">
+              <span><i class="bi bi-calendar3"></i> {{ artikel.tanggal_publish|date:"j M Y" }}</span>
+              {% if artikel.penulis %}
+              <span><i class="bi bi-person"></i> {{ artikel.penulis }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="placeholder-content">
+      <div class="placeholder-icon">📰</div>
+      <span class="placeholder-label">ARTIKEL BELUM TERSEDIA</span>
+      <p class="mb-0 mt-2" style="font-size:0.88rem;">Artikel akan ditambahkan oleh tim KKN.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{# ===== PROGRAM PEMBERDAYAAN ===== #}
+{% if program_featured %}
+<section class="section-py" id="program-pemberdayaan">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-label">Program</span>
+      <h2 class="section-title">Program Pemberdayaan</h2>
+      <p class="section-desc">
+        Berbagai program yang telah dilaksanakan untuk memberdayakan masyarakat Desa Sumberagung
+      </p>
+    </div>
+
+    <div class="row g-4">
+      {% for prog in program_featured %}
+      <div class="col-md-4">
+        <div class="card-custom h-100 d-flex flex-column">
+          {% if prog.thumbnail %}
+          <div class="card-img-wrap">
+            <img src="{{ prog.thumbnail.url }}" alt="{{ prog.nama }}" loading="lazy">
+          </div>
+          {% else %}
+          <div style="height:160px; background:linear-gradient(135deg,#e8f5e9,#f3e5f5);
+                      display:flex; align-items:center; justify-content:center; font-size:2.5rem;">
+            🤝
+          </div>
+          {% endif %}
+          <div class="card-body-custom d-flex flex-column flex-grow-1">
+            <div><span class="card-category-badge">{{ prog.get_kategori_display }}</span></div>
+            <h3 class="card-title-custom mb-3">{{ prog.nama }}</h3>
+            <a href="{% url 'program:detail' prog.slug %}" class="btn-green mt-auto align-self-start" style="font-size:0.82rem;">
+              Selengkapnya <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="{% url 'program:index' %}" class="btn-outline-green">
+        <i class="bi bi-hand-thumbs-up"></i> Lihat Semua Program
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# ===== GALERI ===== #}
+<section class="section-py section-bg-alt" id="galeri-preview">
+  <div class="container">
+    <div class="row align-items-end mb-4">
+      <div class="col-md-8">
+        <span class="section-label">Dokumentasi</span>
+        <h2 class="section-title mb-2">Galeri</h2>
+        <p class="text-muted mb-0">Momen-momen terbaik dari Desa Sumberagung</p>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <a href="{% url 'galeri:index' %}" class="btn-outline-green">
+          Lihat Semua Galeri <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    {% if galeri_featured %}
+    <div class="galeri-grid">
+      {% for item in galeri_featured %}
+      <div class="galeri-item"
+           data-lightbox="{{ item.foto.url }}"
+           data-lightbox-caption="{{ item.judul }}">
+        <img src="{{ item.foto.url }}" alt="{{ item.judul }}" loading="lazy">
+        <div class="galeri-item-overlay">
+          <span class="galeri-item-title">{{ item.judul }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="placeholder-content">
+      <div class="placeholder-icon">📷</div>
+      <span class="placeholder-label">FOTO BELUM TERSEDIA</span>
+      <p class="mb-0 mt-2" style="font-size:0.88rem;">Galeri foto akan diisi setelah foto terkumpul dari tim KKN.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{# ===== EDUKASI ===== #}
+{% if edukasi_terbaru %}
+<section class="section-py" id="edukasi-preview">
+  <div class="container">
+    <div class="row align-items-end mb-4">
+      <div class="col-md-8">
+        <span class="section-label">Pusat Edukasi</span>
+        <h2 class="section-title mb-2">Edukasi</h2>
+        <p class="text-muted mb-0">Unduh materi edukasi yang dapat diakses secara gratis</p>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <a href="{% url 'edukasi:index' %}" class="btn-outline-green">
+          Lihat Semua <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      {% for item in edukasi_terbaru %}
+      <div class="col-md-4">
+        <div class="card-custom p-3 d-flex gap-3 align-items-start">
+          <div style="width:52px; height:52px; background:rgba(46,125,50,0.1);
+                      border-radius:0.75rem; display:flex; align-items:center;
+                      justify-content:center; font-size:1.5rem; flex-shrink:0;">
+            📄
+          </div>
+          <div>
+            <span class="card-category-badge">{{ item.get_format }}</span>
+            <h4 style="font-size:0.95rem; font-family:var(--font-heading); margin-bottom:0.4rem;">
+              {{ item.judul|truncatewords:8 }}
+            </h4>
+            <a href="{% url 'edukasi:download' item.slug %}" class="btn-green" style="font-size:0.8rem; padding:0.35rem 0.9rem;">
+              <i class="bi bi-download"></i> Unduh
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

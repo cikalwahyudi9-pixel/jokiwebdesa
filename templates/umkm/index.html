@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}UMKM Mitra Program KKN{% endblock %}
+{% block meta_description %}Katalog UMKM mitra program pendampingan KKN di Desa Sumberagung, Weleri, Kendal.{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">UMKM</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">UMKM Mitra Program KKN</h1>
+    <p class="page-hero-sub">Katalog UMKM yang berpartisipasi dalam program pendampingan</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+
+    {# Disclaimer WAJIB #}
+    <div class="disclaimer-banner mb-4">
+      <span class="disclaimer-banner-icon"><i class="bi bi-info-circle"></i></span>
+      <div>
+        Data UMKM pada halaman ini merupakan UMKM yang berpartisipasi atau terjangkau
+        dalam program pendampingan KKN dan <strong>tidak dimaksudkan sebagai daftar
+        seluruh UMKM yang terdapat di Desa Sumberagung</strong>.
+      </div>
+    </div>
+
+    {# Filter & Search #}
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <form method="get" class="d-flex gap-2">
+          <input type="text" name="q" value="{{ query }}"
+                 class="form-control" placeholder="Cari nama UMKM..."
+                 style="border-radius:2rem; border-color:var(--color-border);">
+          {% if filter_kategori %}<input type="hidden" name="kategori" value="{{ filter_kategori }}">{% endif %}
+          {% if filter_dusun %}<input type="hidden" name="dusun" value="{{ filter_dusun }}">{% endif %}
+          <button type="submit" class="btn-green" style="white-space:nowrap;">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    {# Filter Kategori #}
+    <div class="filter-bar">
+      <a href="{% url 'umkm:index' %}{% if query %}?q={{ query }}{% endif %}"
+         class="filter-btn {% if not filter_kategori %}active{% endif %}">
+        Semua
+      </a>
+      {% for kat in kategori_list %}
+      <a href="?kategori={{ kat.slug }}{% if query %}&q={{ query }}{% endif %}"
+         class="filter-btn {% if filter_kategori == kat.slug %}active{% endif %}">
+        {{ kat.nama }}
+      </a>
+      {% endfor %}
+    </div>
+
+    {# Daftar UMKM #}
+    {% if umkm_list %}
+    <div class="row g-4">
+      {% for umkm in umkm_list %}
+      <div class="col-lg-3 col-md-6">
+        <div class="umkm-card">
+          {% if umkm.foto_utama %}
+          <a href="{% url 'umkm:detail' umkm.slug %}">
+            <img src="{{ umkm.foto_utama.url }}" alt="{{ umkm.nama_usaha }}"
+                 class="umkm-card-img" loading="lazy">
+          </a>
+          {% else %}
+          <a href="{% url 'umkm:detail' umkm.slug %}">
+            <div class="umkm-card-img d-flex align-items-center justify-content-center"
+                 style="background:linear-gradient(135deg,#e8f5e9,#f1f8e9); font-size:3rem;">
+              <i class="bi bi-shop"></i>
+            </div>
+          </a>
+          {% endif %}
+          <div class="umkm-card-body">
+            {% if umkm.kategori %}<span class="card-category-badge">{{ umkm.kategori.nama }}</span>{% endif %}
+            <h2 class="umkm-card-name">{{ umkm.nama_usaha }}</h2>
+            {% if umkm.dusun %}<p class="umkm-card-produk"><i class="bi bi-geo-alt"></i> {{ umkm.dusun }}</p>{% endif %}
+            {% if umkm.produk_unggulan %}
+            <p class="umkm-card-produk">{{ umkm.produk_unggulan|truncatewords:6 }}</p>
+            {% endif %}
+            <a href="{% url 'umkm:detail' umkm.slug %}" class="btn-green" style="font-size:0.82rem; padding:0.4rem 1rem;">
+              Lihat Detail <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="placeholder-content">
+      <div class="placeholder-icon"><i class="bi bi-shop"></i></div>
+      {% if query or filter_kategori %}
+        <span class="placeholder-label">TIDAK ADA HASIL</span>
+        <p class="mt-2 mb-0">Tidak ditemukan UMKM yang sesuai dengan filter ini.</p>
+        <a href="{% url 'umkm:index' %}" class="btn-green mt-3" style="display:inline-flex;">Reset Filter</a>
+      {% else %}
+        <span class="placeholder-label">DATA UMKM BELUM TERSEDIA</span>
+        <p class="mt-2 mb-0" style="font-size:0.88rem;">
+          Data UMKM mitra sedang dalam proses pengumpulan dari program pendampingan KKN.
+        </p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}

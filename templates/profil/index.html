@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profil Desa{% endblock %}
+{% block meta_description %}Profil Desa Sumberagung — informasi identitas, sejarah, kondisi wilayah, demografi, dan lokasi.{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">Profil Desa</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">Profil Desa Sumberagung</h1>
+    <p class="page-hero-sub">{{ desa_kecamatan }}, {{ desa_kabupaten }}, {{ desa_provinsi }}</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+
+    {# Tabs Navigasi #}
+    <ul class="nav nav-pills mb-4 flex-wrap gap-2" id="profilTab">
+      <li class="nav-item">
+        <a class="nav-link active filter-btn" href="#tentang" data-bs-toggle="pill">
+          <i class="bi bi-info-circle me-1"></i> Tentang Desa
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link filter-btn" href="#sejarah" data-bs-toggle="pill">
+          <i class="bi bi-book me-1"></i> Sejarah
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link filter-btn" href="#kondisi" data-bs-toggle="pill">
+          <i class="bi bi-map me-1"></i> Kondisi Wilayah
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link filter-btn" href="#demografi" data-bs-toggle="pill">
+          <i class="bi bi-people me-1"></i> Demografi
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link filter-btn" href="#fasilitas" data-bs-toggle="pill">
+          <i class="bi bi-building me-1"></i> Fasilitas
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link filter-btn" href="#lokasi" data-bs-toggle="pill">
+          <i class="bi bi-geo-alt me-1"></i> Lokasi
+        </a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="profilTabContent">
+
+      {# Tentang Desa #}
+      <div class="tab-pane fade show active" id="tentang">
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <span class="section-label">Identitas Desa</span>
+            <h2 class="section-title">{{ desa_nama }}</h2>
+            <div class="divider"></div>
+
+            {% if profil and profil.deskripsi_singkat %}
+              <p>{{ profil.deskripsi_singkat }}</p>
+            {% else %}
+              <div class="placeholder-content">
+                <span class="placeholder-label">DATA BELUM TERSEDIA</span>
+                <p class="mt-2 mb-0" style="font-size:0.88rem;">
+                  Deskripsi desa sedang dalam proses validasi dengan perangkat desa.
+                </p>
+              </div>
+            {% endif %}
+
+            <div class="row g-3 mt-3">
+              <div class="col-sm-6">
+                <div class="card-custom p-3">
+                  <small class="text-muted">Kecamatan</small>
+                  <div class="fw-bold">{{ desa_kecamatan }}</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card-custom p-3">
+                  <small class="text-muted">Kabupaten</small>
+                  <div class="fw-bold">{{ desa_kabupaten }}</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card-custom p-3">
+                  <small class="text-muted">Provinsi</small>
+                  <div class="fw-bold">{{ desa_provinsi }}</div>
+                </div>
+              </div>
+              {% if profil %}
+              {% if profil.kode_pos %}
+              <div class="col-sm-6">
+                <div class="card-custom p-3">
+                  <small class="text-muted">Kode Pos</small>
+                  <div class="fw-bold">{{ profil.kode_pos }}</div>
+                </div>
+              </div>
+              {% endif %}
+              {% if profil.luas_wilayah %}
+              <div class="col-sm-6">
+                <div class="card-custom p-3">
+                  <small class="text-muted">Luas Wilayah</small>
+                  <div class="fw-bold">{{ profil.luas_wilayah }}</div>
+                </div>
+              </div>
+              {% endif %}
+              {% if profil.jumlah_dusun %}
+              <div class="col-sm-6">
+                <div class="card-custom p-3">
+                  <small class="text-muted">Jumlah Dusun</small>
+                  <div class="fw-bold">{{ profil.jumlah_dusun }} Dusun</div>
+                </div>
+              </div>
+              {% endif %}
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-lg-5">
+            {% if profil and profil.foto_header %}
+              <img src="{{ profil.foto_header.url }}" alt="Desa Sumberagung"
+                   class="img-fluid rounded-custom shadow" style="width:100%; object-fit:cover; max-height:420px;">
+            {% else %}
+              <div class="placeholder-content" style="min-height:300px; display:flex; flex-direction:column; justify-content:center;">
+                <div class="placeholder-icon">🏡</div>
+                <span class="placeholder-label">FOTO DESA BELUM TERSEDIA</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {# Sejarah #}
+      <div class="tab-pane fade" id="sejarah">
+        <h2 class="section-title">Sejarah Desa</h2>
+        <div class="divider"></div>
+        {% if profil and profil.sejarah %}
+          <div class="content-html">{{ profil.sejarah|safe }}</div>
+        {% else %}
+          <div class="placeholder-content">
+            <div class="placeholder-icon">📜</div>
+            <span class="placeholder-label">DATA SEJARAH DESA BELUM TERSEDIA</span>
+            <p class="mt-2 mb-0" style="font-size:0.88rem;">
+              Informasi sejarah desa membutuhkan sumber yang valid dari perangkat desa
+              sebelum dapat dipublikasikan.
+            </p>
+          </div>
+        {% endif %}
+      </div>
+
+      {# Kondisi Wilayah #}
+      <div class="tab-pane fade" id="kondisi">
+        <h2 class="section-title">Kondisi & Wilayah</h2>
+        <div class="divider"></div>
+        {% if profil and profil.kondisi_wilayah %}
+          <div class="content-html">{{ profil.kondisi_wilayah|safe }}</div>
+        {% else %}
+          <div class="placeholder-content">
+            <div class="placeholder-icon">🗺️</div>
+            <span class="placeholder-label">DATA KONDISI WILAYAH BELUM TERSEDIA</span>
+            <p class="mt-2 mb-0" style="font-size:0.88rem;">
+              Informasi kondisi wilayah sedang dalam proses pengumpulan dan validasi.
+            </p>
+          </div>
+        {% endif %}
+      </div>
+
+      {# Demografi #}
+      <div class="tab-pane fade" id="demografi">
+        <h2 class="section-title">Demografi</h2>
+        <div class="divider"></div>
+        {% if profil and profil.demografi %}
+          <div class="content-html">{{ profil.demografi|safe }}</div>
+        {% else %}
+          <div class="placeholder-content">
+            <div class="placeholder-icon"><i class="bi bi-people"></i></div>
+            <span class="placeholder-label">DATA DEMOGRAFI BELUM TERSEDIA</span>
+            <p class="mt-2 mb-0" style="font-size:0.88rem;">
+              Data demografi membutuhkan sumber resmi yang terverifikasi sebelum dipublikasikan.
+            </p>
+          </div>
+        {% endif %}
+      </div>
+
+      {# Fasilitas #}
+      <div class="tab-pane fade" id="fasilitas">
+        <h2 class="section-title">Fasilitas Desa</h2>
+        <div class="divider"></div>
+        {% if fasilitas %}
+          <div class="row g-4 mt-2">
+            {% for f in fasilitas %}
+            <div class="col-md-6 col-lg-4">
+              <div class="card-custom p-3 h-100 d-flex gap-3 align-items-start">
+                <div style="width:48px; height:48px; background:rgba(15,82,186,0.1); border-radius:0.5rem; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; color:var(--color-primary);">
+                  {% if f.kategori == 'pendidikan' %}<i class="bi bi-book"></i>
+                  {% elif f.kategori == 'kesehatan' %}<i class="bi bi-heart-pulse"></i>
+                  {% elif f.kategori == 'ibadah' %}<i class="bi bi-moon-stars"></i>
+                  {% elif f.kategori == 'pemerintahan' %}<i class="bi bi-bank"></i>
+                  {% elif f.kategori == 'olahraga' %}<i class="bi bi-bicycle"></i>
+                  {% else %}<i class="bi bi-building"></i>{% endif %}
+                </div>
+                <div>
+                  <h4 style="font-size:1rem; font-family:var(--font-heading); margin-bottom:0.25rem;">{{ f.nama }}</h4>
+                  {% if f.dusun %}<p class="mb-1 text-muted" style="font-size:0.85rem;"><i class="bi bi-geo-alt"></i> {{ f.dusun }}</p>{% endif %}
+                  {% if f.keterangan %}<p class="mb-0" style="font-size:0.85rem;">{{ f.keterangan }}</p>{% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="placeholder-content">
+            <div class="placeholder-icon"><i class="bi bi-building"></i></div>
+            <span class="placeholder-label">DATA FASILITAS BELUM TERSEDIA</span>
+            <p class="mt-2 mb-0" style="font-size:0.88rem;">Data fasilitas desa belum ditambahkan atau sedang ditinjau.</p>
+          </div>
+        {% endif %}
+      </div>
+
+      {# Lokasi #}
+      <div class="tab-pane fade" id="lokasi">
+        <h2 class="section-title">Lokasi Desa</h2>
+        <div class="divider"></div>
+        <p><i class="bi bi-geo-alt-fill text-primary-custom"></i>
+          {{ desa_nama }}, {{ desa_kecamatan }}, {{ desa_kabupaten }}, {{ desa_provinsi }}
+        </p>
+
+        {# Leaflet Map — ditampilkan jika ada koordinat #}
+        {% if profil and profil.koordinat_lat and profil.koordinat_lng %}
+        <div id="leaflet-map" style="height:450px; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-md); margin-bottom:1.5rem;"></div>
+        {% endif %}
+
+        {# Google Maps Embed #}
+        {% if profil and profil.maps_embed_url %}
+          {% if not profil.koordinat_lat %}
+          <div style="border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-md);">
+            <iframe src="{{ profil.maps_embed_url }}"
+                    width="100%" height="450" style="border:0;" allowfullscreen
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    title="Lokasi Desa Sumberagung di Google Maps">
+            </iframe>
+          </div>
+          {% else %}
+          <div class="mt-3">
+            <a href="{{ profil.maps_embed_url }}" target="_blank" rel="noopener noreferrer" class="btn-outline-green">
+              <i class="bi bi-map"></i> Buka di Google Maps
+            </a>
+          </div>
+          {% endif %}
+        {% endif %}
+
+        {% if not profil or not profil.koordinat_lat and not profil.maps_embed_url %}
+          <div class="placeholder-content">
+            <div class="placeholder-icon"><i class="bi bi-geo-alt"></i></div>
+            <span class="placeholder-label">PETA BELUM DIKONFIGURASI</span>
+            <p class="mt-2 mb-0" style="font-size:0.88rem;">
+              Tambahkan koordinat atau URL embed Google Maps melalui panel Admin → Profil Desa.
+            </p>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+{% if profil and profil.koordinat_lat and profil.koordinat_lng %}
+<script>
+  const lat = {{ profil.koordinat_lat }};
+  const lng = {{ profil.koordinat_lng }};
+  const map = L.map('leaflet-map').setView([lat, lng], 15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19,
+  }).addTo(map);
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup('<strong>{{ desa_nama }}</strong><br>{{ desa_kecamatan }}, {{ desa_kabupaten }}')
+    .openPopup();
+</script>
+{% endif %}
+{% endblock %}

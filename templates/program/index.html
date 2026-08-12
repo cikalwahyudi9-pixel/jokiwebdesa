@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Program Pemberdayaan{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">Program</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">Program Pemberdayaan</h1>
+    <p class="page-hero-sub">Berbagai program yang telah dilaksanakan di Desa Sumberagung</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    {% if program_list %}
+    {% regroup program_list by get_kategori_display as kategori_groups %}
+    {% for group in kategori_groups %}
+    <div class="mb-5">
+      <h2 style="font-family:var(--font-heading); font-size:1.4rem; margin-bottom:1.5rem; color:var(--color-primary);">
+        {{ group.grouper }}
+      </h2>
+      <div class="row g-4">
+        {% for prog in group.list %}
+        <div class="col-md-6 col-lg-4">
+          <div class="card-custom h-100">
+            {% if prog.thumbnail %}
+            <div class="card-img-wrap">
+              <img src="{{ prog.thumbnail.url }}" alt="{{ prog.nama }}" loading="lazy">
+            </div>
+            {% else %}
+            <div style="height:160px; background:linear-gradient(135deg,#e8f5e9,#f3e5f5);
+                        display:flex; align-items:center; justify-content:center; font-size:2.5rem;">🤝</div>
+            {% endif %}
+            <div class="card-body-custom">
+              <span class="card-category-badge">{{ prog.get_kategori_display }}</span>
+              <h3 class="card-title-custom" style="-webkit-line-clamp:3;">{{ prog.nama }}</h3>
+              <a href="{% url 'program:detail' prog.slug %}" class="btn-green mt-2" style="font-size:0.82rem; padding:0.4rem 1rem;">
+                Selengkapnya <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="placeholder-content" style="padding:5rem 2rem;">
+      <div class="placeholder-icon">🤝</div>
+      <span class="placeholder-label">DATA PROGRAM BELUM TERSEDIA</span>
+      <p class="mt-2 mb-0" style="font-size:0.88rem;">Program pemberdayaan sedang dalam proses dokumentasi.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

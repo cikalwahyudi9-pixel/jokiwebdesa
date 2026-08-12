@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard Insight Kesehatan{% endblock %}
+
+{% block extra_css %}
+<style>
+.insight-stat-card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 1.5rem;
+  text-align: center;
+}
+.insight-stat-num {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  display: block;
+}
+.chart-container { position: relative; height: 260px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">Insight Kesehatan</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">Dashboard Insight</h1>
+    <p class="page-hero-sub">Data agregat & anonim dari kegiatan skrining kesehatan</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+
+    {# DISCLAIMER WAJIB #}
+    <div class="disclaimer-banner danger mb-4">
+      <span class="disclaimer-banner-icon"><i class="bi bi-exclamation-triangle"></i></span>
+      <div>
+        <strong>Perhatian Penting:</strong><br>
+        Data pada halaman ini merupakan ringkasan hasil kegiatan/skrining peserta program
+        dan <strong>tidak merepresentasikan kondisi kesehatan seluruh masyarakat Desa Sumberagung</strong>.
+        Informasi ditampilkan untuk tujuan dokumentasi dan edukasi,
+        <strong>bukan sebagai diagnosis medis</strong>. Data bersifat agregat dan anonim —
+        tidak ada data pribadi individu yang ditampilkan.
+      </div>
+    </div>
+
+    {% if events %}
+    {# Stat Cards Ringkasan #}
+    <div class="row g-3 mb-5">
+      <div class="col-md-4">
+        <div class="insight-stat-card">
+          <i class="bi bi-calendar-check-fill fs-3 mb-2" style="color:var(--color-primary);"></i>
+          <span class="insight-stat-num">{{ total_events }}</span>
+          <span style="font-size:0.85rem; color:var(--color-text-muted);">Kegiatan Skrining</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="insight-stat-card">
+          <i class="bi bi-people-fill fs-3 mb-2" style="color:var(--color-primary);"></i>
+          <span class="insight-stat-num">{{ total_peserta }}</span>
+          <span style="font-size:0.85rem; color:var(--color-text-muted);">Total Peserta</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="insight-stat-card">
+          <i class="bi bi-heart-pulse-fill fs-3 mb-2" style="color:var(--color-primary);"></i>
+          <span class="insight-stat-num">{{ events.0.tanggal|date:"Y" }}</span>
+          <span style="font-size:0.85rem; color:var(--color-text-muted);">Tahun Program</span>
+        </div>
+      </div>
+    </div>
+
+    {# Per Event #}
+    {% for event in events %}
+    <div class="card-custom p-4 mb-4">
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-md-8">
+          <h2 style="font-family:var(--font-heading); font-size:1.3rem; margin-bottom:0.25rem;">
+            {{ event.nama_kegiatan }}
+          </h2>
+          <div class="d-flex flex-wrap gap-3 text-muted" style="font-size:0.88rem;">
+            <span><i class="bi bi-calendar3"></i> {{ event.tanggal|date:"j F Y" }}</span>
+            <span><i class="bi bi-geo-alt"></i> {{ event.dusun }}</span>
+            <span><i class="bi bi-people"></i> {{ event.jumlah_peserta }} peserta</span>
+            {% if event.rentang_usia %}
+            <span><i class="bi bi-person"></i> Usia {{ event.rentang_usia }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {% if event.catatan %}
+      <p style="font-size:0.9rem; color:var(--color-text-muted); margin-bottom:1.5rem;">{{ event.catatan }}</p>
+      {% endif %}
+
+      {# Charts #}
+      {% if event.data_agregat.all %}
+      <h3 style="font-family:var(--font-heading); font-size:1rem; margin-bottom:1.25rem;">
+        <i class="bi bi-bar-chart-fill me-2" style="color:var(--color-primary);"></i>Ringkasan Data Skrining
+      </h3>
+      {% regroup event.data_agregat.all by get_indikator_display as indikator_groups %}
+      <div class="row g-4">
+        {% for group in indikator_groups %}
+        <div class="col-md-6">
+          <div style="background:rgba(46,125,50,0.03); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:1.25rem;">
+            <h4 style="font-size:0.9rem; font-weight:600; margin-bottom:1rem; color:var(--color-text);">{{ group.grouper }}</h4>
+            <div class="chart-container">
+              <canvas id="chart-{{ event.pk }}-{{ forloop.counter }}" data-event="{{ event.pk }}" data-indikator="{{ group.list.0.indikator }}"></canvas>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="disclaimer-banner mt-4" style="font-size:0.78rem;">
+        <span class="disclaimer-banner-icon"><i class="bi bi-info-circle"></i></span>
+        <span>{{ event.disclaimer_text }}</span>
+      </div>
+    </div>
+    {% endfor %}
+
+    {% else %}
+    <div class="placeholder-content" style="padding:5rem 2rem;">
+      <div class="placeholder-icon">❤️</div>
+      <span class="placeholder-label">DATA INSIGHT BELUM TERSEDIA</span>
+      <p class="mt-2 mb-0" style="font-size:0.88rem;">
+        Data agregat kegiatan skrining kesehatan sedang dalam proses pengumpulan dan validasi.
+        Hanya data agregat &amp; anonim yang akan ditampilkan.
+      </p>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+const chartData = {{ chart_data_json|safe }};
+const COLORS = [
+  'rgba(46,125,50,0.8)', 'rgba(255,167,38,0.8)', 'rgba(211,47,47,0.8)',
+  'rgba(25,118,210,0.8)', 'rgba(123,31,162,0.8)', 'rgba(0,151,167,0.8)',
+];
+
+document.querySelectorAll('canvas[data-event]').forEach(canvas => {
+  const eventPk = canvas.dataset.event;
+  const indikator = canvas.dataset.indikator;
+  const data = chartData[eventPk] && chartData[eventPk][indikator];
+  if (!data) return;
+
+  new Chart(canvas, {
+    type: 'doughnut',
+    data: {
+      labels: data.labels,
+      datasets: [{
+        data: data.data,
+        backgroundColor: COLORS.slice(0, data.data.length),
+        borderWidth: 2,
+        borderColor: '#fff',
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 12 } },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const persen = data.persentase[ctx.dataIndex];
+              return ` ${ctx.label}: ${ctx.parsed} orang (${persen}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+});
+</script>
+{% endblock %}

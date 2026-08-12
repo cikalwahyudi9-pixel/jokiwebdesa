@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% block title %}{{ umkm.nama_usaha }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'umkm:index' %}">UMKM</a></li>
+        <li class="breadcrumb-item active">{{ umkm.nama_usaha }}</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">{{ umkm.nama_usaha }}</h1>
+    {% if umkm.kategori %}<p class="page-hero-sub">{{ umkm.kategori.nama }}</p>{% endif %}
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+
+    {# Disclaimer UMKM #}
+    <div class="disclaimer-banner mb-4">
+      <span class="disclaimer-banner-icon"><i class="bi bi-info-circle"></i></span>
+      <span>UMKM ini merupakan mitra program pendampingan KKN, bukan seluruh representasi UMKM Desa Sumberagung.</span>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-lg-7">
+        {# Foto Utama #}
+        {% if umkm.foto_utama %}
+        <img src="{{ umkm.foto_utama.url }}" alt="{{ umkm.nama_usaha }}"
+             class="img-fluid rounded-custom shadow mb-4" style="width:100%; max-height:420px; object-fit:cover;">
+        {% endif %}
+
+        {# Deskripsi #}
+        {% if umkm.deskripsi %}
+        <h2 class="section-title" style="font-size:1.4rem;">Tentang Usaha</h2>
+        <div class="divider"></div>
+        <div class="content-html">{{ umkm.deskripsi|safe }}</div>
+        {% endif %}
+
+        {# Produk Unggulan #}
+        {% if umkm.produk_unggulan %}
+        <h3 style="font-family:var(--font-heading); font-size:1.2rem; margin-top:1.5rem;">Produk Unggulan</h3>
+        <p>{{ umkm.produk_unggulan }}</p>
+        {% endif %}
+
+        {# Galeri Foto #}
+        {% if foto_galeri %}
+        <h3 style="font-family:var(--font-heading); font-size:1.2rem; margin-top:1.5rem;">Galeri Foto</h3>
+        <div class="galeri-grid" style="grid-template-columns:repeat(auto-fill, minmax(140px,1fr));">
+          {% for foto in foto_galeri %}
+          <div class="galeri-item"
+               data-lightbox="{{ foto.foto.url }}"
+               data-lightbox-caption="{{ foto.caption }}">
+            <img src="{{ foto.foto.url }}" alt="{{ foto.caption }}" loading="lazy">
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {# Hasil Pendampingan Before-After #}
+        {% if pendampingan %}
+        <h3 style="font-family:var(--font-heading); font-size:1.2rem; margin-top:2rem;">Hasil Pendampingan KKN</h3>
+        <div class="divider"></div>
+        {% for p in pendampingan %}
+        <div class="card-custom p-3 mb-3">
+          <strong class="text-primary-custom">{{ p.get_jenis_display }}</strong>
+          {% if p.keterangan %}<p class="mt-1 mb-2" style="font-size:0.9rem;">{{ p.keterangan }}</p>{% endif %}
+          {% if p.foto_sebelum or p.foto_sesudah %}
+          <div class="row g-2">
+            {% if p.foto_sebelum %}
+            <div class="col-6">
+              <img src="{{ p.foto_sebelum.url }}" alt="Sebelum" class="img-fluid rounded" loading="lazy">
+              <small class="d-block text-center text-muted mt-1">Sebelum</small>
+            </div>
+            {% endif %}
+            {% if p.foto_sesudah %}
+            <div class="col-6">
+              <img src="{{ p.foto_sesudah.url }}" alt="Sesudah" class="img-fluid rounded" loading="lazy">
+              <small class="d-block text-center text-muted mt-1">Sesudah</small>
+            </div>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {# Hasil Pendampingan (teks) #}
+        {% if umkm.hasil_pendampingan %}
+        <div class="content-html mt-2">{{ umkm.hasil_pendampingan|safe }}</div>
+        {% endif %}
+      </div>
+
+      <div class="col-lg-5">
+        {# Kartu Info #}
+        <div class="card-custom p-4 mb-3">
+          <h3 style="font-family:var(--font-heading); font-size:1.1rem; margin-bottom:1rem;">Informasi Usaha</h3>
+
+          {% if umkm.nama_pemilik %}
+          <div class="d-flex gap-2 mb-2">
+            <i class="bi bi-person-fill text-primary-custom"></i>
+            <div>
+              <small class="text-muted">Pemilik</small>
+              <div class="fw-semibold">{{ umkm.nama_pemilik }}</div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if umkm.dusun %}
+          <div class="d-flex gap-2 mb-2">
+            <i class="bi bi-geo-alt-fill text-primary-custom"></i>
+            <div>
+              <small class="text-muted">Lokasi</small>
+              <div class="fw-semibold">{{ umkm.dusun }}</div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if umkm.kategori %}
+          <div class="d-flex gap-2 mb-2">
+            <i class="bi bi-tag-fill text-primary-custom"></i>
+            <div>
+              <small class="text-muted">Kategori</small>
+              <div class="fw-semibold">{{ umkm.kategori.nama }}</div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+        {# Kontak (hanya jika ada izin) #}
+        {% if umkm.izin_publikasi_kontak %}
+        <div class="card-custom p-4 mb-3">
+          <h3 style="font-family:var(--font-heading); font-size:1.1rem; margin-bottom:1rem;">
+            <i class="bi bi-telephone-fill text-primary-custom me-1"></i> Kontak
+          </h3>
+
+          {% if umkm.kontak_wa %}
+          <a href="https://wa.me/62{{ umkm.kontak_wa }}" target="_blank" class="btn-green w-100 justify-content-center mb-2">
+            <i class="bi bi-whatsapp"></i> WhatsApp
+          </a>
+          {% endif %}
+
+          {% if umkm.instagram %}
+          <a href="https://instagram.com/{{ umkm.instagram }}" target="_blank" class="btn-outline-green w-100 justify-content-center mb-2">
+            <i class="bi bi-instagram"></i> @{{ umkm.instagram }}
+          </a>
+          {% endif %}
+
+          {% if umkm.marketplace_url %}
+          <a href="{{ umkm.marketplace_url }}" target="_blank" class="btn-outline-green w-100 justify-content-center mb-2">
+            <i class="bi bi-shop"></i> Marketplace
+          </a>
+          {% endif %}
+
+          {% if umkm.google_maps_url %}
+          <a href="{{ umkm.google_maps_url }}" target="_blank" class="btn-outline-green w-100 justify-content-center">
+            <i class="bi bi-map-fill"></i> Lihat Lokasi
+          </a>
+          {% endif %}
+
+          {% if umkm.qris_image %}
+          <div class="mt-3 text-center">
+            <small class="text-muted d-block mb-1">QRIS Pembayaran</small>
+            <img src="{{ umkm.qris_image.url }}" alt="QRIS {{ umkm.nama_usaha }}"
+                 style="max-width:180px;" class="rounded">
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {# UMKM Lain #}
+        {% if umkm_lain %}
+        <div class="card-custom p-4">
+          <h3 style="font-family:var(--font-heading); font-size:1rem; margin-bottom:1rem;">UMKM Serupa</h3>
+          {% for u in umkm_lain %}
+          <a href="{% url 'umkm:detail' u.slug %}" class="d-flex gap-2 align-items-center text-dark mb-2 pb-2 border-bottom text-decoration-none">
+            {% if u.foto_utama %}
+            <img src="{{ u.foto_utama.url }}" alt="{{ u.nama_usaha }}"
+                 style="width:48px; height:48px; object-fit:cover; border-radius:0.5rem;" loading="lazy">
+            {% else %}
+            <div style="width:48px; height:48px; background:#e8f5e9; border-radius:0.5rem; display:flex; align-items:center; justify-content:center;"><i class="bi bi-shop"></i></div>
+            {% endif %}
+            <div>
+              <div style="font-weight:600; font-size:0.88rem;">{{ u.nama_usaha }}</div>
+              {% if u.dusun %}<small class="text-muted">{{ u.dusun }}</small>{% endif %}
+            </div>
+          </a>
+          {% endfor %}
+          <a href="{% url 'umkm:index' %}" class="text-primary-custom" style="font-size:0.85rem;">
+            Lihat semua UMKM <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

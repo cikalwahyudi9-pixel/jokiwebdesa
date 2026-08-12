@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Potensi Desa{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">Potensi Desa</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">Potensi Desa Sumberagung</h1>
+    <p class="page-hero-sub">Berbagai potensi unggulan yang dimiliki Desa Sumberagung</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    {% if kategori_list %}
+    <div class="row g-4">
+      {% for kategori in kategori_list %}
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+        <a href="{% url 'potensi:detail' kategori.slug %}" class="potensi-card">
+          <div class="potensi-icon">
+            {% if kategori.ikon %}
+              <i class="{{ kategori.ikon }}"></i>
+            {% else %}<i class="bi bi-tree"></i>{% endif %}
+          </div>
+          <h2 class="potensi-card-title">{{ kategori.nama }}</h2>
+          {% if kategori.deskripsi_singkat %}
+          <p class="potensi-card-desc">{{ kategori.deskripsi_singkat }}</p>
+          {% endif %}
+          <span style="font-size:0.82rem; margin-top:0.75rem; opacity:0.75;">
+            Jelajahi <i class="bi bi-arrow-right"></i>
+          </span>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="placeholder-content" style="padding:5rem 2rem;">
+      <div class="placeholder-icon"><i class="bi bi-tree"></i></div>
+      <span class="placeholder-label">DATA POTENSI BELUM TERSEDIA</span>
+      <p class="mt-2 mb-0" style="font-size:0.88rem;">
+        Data potensi desa sedang dalam proses pengumpulan dan validasi dari perangkat desa.
+      </p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

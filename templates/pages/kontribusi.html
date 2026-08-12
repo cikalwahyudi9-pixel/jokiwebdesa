@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block title %}Kirim Kontribusi{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">Kontribusi</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">Kirim Cerita & Masukan</h1>
+    <p class="page-hero-sub">Bantu kami membuat informasi Desa Sumberagung semakin lengkap dan akurat</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    <div class="row g-5 justify-content-center">
+      <div class="col-lg-7">
+
+        {# Messages #}
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-{{ msg.tags|default:'info' }} mb-4" style="border-radius:var(--radius-md); border:none; padding:1rem 1.25rem; background:{% if msg.tags == 'success' %}rgba(46,125,50,0.1){% else %}rgba(211,47,47,0.1){% endif %};">
+          <i class="bi bi-{% if msg.tags == 'success' %}check-circle-fill text-success{% else %}exclamation-triangle-fill text-danger{% endif %} me-2"></i>
+          {{ msg }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <div class="card-custom p-4 p-lg-5">
+          <h2 style="font-family:var(--font-heading); font-size:1.3rem; margin-bottom:0.5rem;">Form Kontribusi</h2>
+          <p style="font-size:0.88rem; color:var(--color-text-muted); margin-bottom:1.5rem;">
+            Semua kontribusi akan ditinjau oleh tim kami sebelum ditampilkan. Identitas Anda bersifat opsional.
+          </p>
+
+          <form method="post" action="{% url 'pages:kontribusi' %}" novalidate>
+            {% csrf_token %}
+            {# Honeypot spam protection #}
+            <div style="display:none;">
+              <input type="text" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="mb-3">
+              <label for="nama" style="font-size:0.88rem; font-weight:600; margin-bottom:0.3rem; display:block;">Nama <span style="color:#c62828;">*</span></label>
+              <input type="text" id="nama" name="nama" required placeholder="Boleh nama samaran"
+                     style="width:100%; padding:0.65rem 1rem; border:1px solid var(--color-border); border-radius:var(--radius-sm); font-size:0.9rem; outline:none; transition:border-color 0.2s;"
+                     onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='var(--color-border)'">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" style="font-size:0.88rem; font-weight:600; margin-bottom:0.3rem; display:block;">Email <span style="color:var(--color-text-muted); font-weight:400;">(opsional)</span></label>
+              <input type="email" id="email" name="email" placeholder="Untuk kami menghubungi balik"
+                     style="width:100%; padding:0.65rem 1rem; border:1px solid var(--color-border); border-radius:var(--radius-sm); font-size:0.9rem; outline:none; transition:border-color 0.2s;"
+                     onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='var(--color-border)'">
+            </div>
+
+            <div class="mb-3">
+              <label for="jenis" style="font-size:0.88rem; font-weight:600; margin-bottom:0.3rem; display:block;">Jenis Kontribusi <span style="color:#c62828;">*</span></label>
+              <select id="jenis" name="jenis"
+                      style="width:100%; padding:0.65rem 1rem; border:1px solid var(--color-border); border-radius:var(--radius-sm); font-size:0.9rem; background:white; outline:none; cursor:pointer;">
+                <option value="masukan">💡 Masukan / Saran</option>
+                <option value="cerita">📖 Cerita / Pengalaman</option>
+                <option value="koreksi">✏️ Koreksi Informasi</option>
+                <option value="lainnya">📬 Lainnya</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label for="pesan" style="font-size:0.88rem; font-weight:600; margin-bottom:0.3rem; display:block;">Pesan / Cerita <span style="color:#c62828;">*</span></label>
+              <textarea id="pesan" name="pesan" rows="6" required placeholder="Tulis cerita atau masukan Anda di sini..."
+                        style="width:100%; padding:0.65rem 1rem; border:1px solid var(--color-border); border-radius:var(--radius-sm); font-size:0.9rem; resize:vertical; outline:none; transition:border-color 0.2s;"
+                        onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='var(--color-border)'"></textarea>
+            </div>
+
+            <button type="submit" class="btn-green w-100 justify-content-center" style="padding:0.75rem;">
+              <i class="bi bi-send-fill"></i> Kirim Kontribusi
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card-custom p-4 mb-4" style="background:rgba(46,125,50,0.04);">
+          <h3 style="font-family:var(--font-heading); font-size:1rem; margin-bottom:1rem;">
+            <i class="bi bi-info-circle me-2" style="color:var(--color-primary);"></i>Panduan Kontribusi
+          </h3>
+          <ul style="list-style:none; padding:0; font-size:0.85rem; color:var(--color-text-muted); display:flex; flex-direction:column; gap:0.6rem; margin:0;">
+            <li><i class="bi bi-check-circle-fill me-2" style="color:var(--color-primary);"></i>Cerita pengalaman di Desa Sumberagung</li>
+            <li><i class="bi bi-check-circle-fill me-2" style="color:var(--color-primary);"></i>Masukan untuk perbaikan informasi</li>
+            <li><i class="bi bi-check-circle-fill me-2" style="color:var(--color-primary);"></i>Koreksi data yang tidak akurat</li>
+            <li><i class="bi bi-x-circle-fill me-2" style="color:#c62828;"></i>Konten yang bersifat SARA atau provokatif</li>
+            <li><i class="bi bi-x-circle-fill me-2" style="color:#c62828;"></i>Iklan atau promosi komersial</li>
+          </ul>
+        </div>
+
+        {% if kontribusi_publik %}
+        <div class="card-custom p-4">
+          <h3 style="font-family:var(--font-heading); font-size:1rem; margin-bottom:1rem;">
+            <i class="bi bi-chat-quote me-2" style="color:var(--color-primary);"></i>Kontribusi Terbaru
+          </h3>
+          <div style="display:flex; flex-direction:column; gap:1rem;">
+            {% for k in kontribusi_publik %}
+            <div style="border-left:3px solid var(--color-primary); padding-left:0.75rem;">
+              <p style="font-size:0.82rem; margin-bottom:0.25rem; color:var(--color-text);">{{ k.pesan|truncatewords:20 }}</p>
+              <small style="color:var(--color-text-muted);">— {{ k.nama }} · {{ k.get_jenis_display }}</small>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

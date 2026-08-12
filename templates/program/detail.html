@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}{{ program.nama }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'program:index' %}">Program</a></li>
+        <li class="breadcrumb-item active">{{ program.nama|truncatewords:5 }}</li>
+      </ol>
+    </nav>
+    <span class="hero-badge mb-2">{{ program.get_kategori_display }}</span>
+    <h1 class="page-hero-title" style="max-width:700px;">{{ program.nama }}</h1>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-8">
+        {% if program.thumbnail %}
+        <img src="{{ program.thumbnail.url }}" alt="{{ program.nama }}"
+             class="img-fluid rounded-custom shadow mb-4" style="width:100%; max-height:420px; object-fit:cover;">
+        {% endif %}
+
+        {% if program.latar_belakang %}
+        <h2 style="font-family:var(--font-heading); font-size:1.3rem;">Latar Belakang</h2>
+        <div class="divider"></div>
+        <div class="content-html">{{ program.latar_belakang|safe }}</div>
+        {% endif %}
+
+        {% if program.tujuan %}
+        <h2 style="font-family:var(--font-heading); font-size:1.3rem; margin-top:2rem;">Tujuan Program</h2>
+        <div class="content-html">{{ program.tujuan|safe }}</div>
+        {% endif %}
+
+        {% if program.pelaksanaan %}
+        <h2 style="font-family:var(--font-heading); font-size:1.3rem; margin-top:2rem;">Pelaksanaan</h2>
+        <div class="content-html">{{ program.pelaksanaan|safe }}</div>
+        {% endif %}
+
+        {% if program.hasil %}
+        <h2 style="font-family:var(--font-heading); font-size:1.3rem; margin-top:2rem;">Hasil & Dampak</h2>
+        <div class="content-html">{{ program.hasil|safe }}</div>
+        {% if program.dampak %}<div class="content-html">{{ program.dampak|safe }}</div>{% endif %}
+        {% endif %}
+
+        {% if program.luaran %}
+        <h2 style="font-family:var(--font-heading); font-size:1.3rem; margin-top:2rem;">Luaran</h2>
+        <div class="content-html">{{ program.luaran|safe }}</div>
+        {% endif %}
+
+        {# Dokumentasi #}
+        {% if program.dokumentasi.all %}
+        <h2 style="font-family:var(--font-heading); font-size:1.3rem; margin-top:2rem;">Dokumentasi</h2>
+        <div class="galeri-grid mt-3" style="grid-template-columns:repeat(auto-fill, minmax(180px,1fr));">
+          {% for dok in program.dokumentasi.all %}
+          <div class="galeri-item" data-lightbox="{{ dok.foto.url }}" data-lightbox-caption="{{ dok.caption }}">
+            <img src="{{ dok.foto.url }}" alt="{{ dok.caption }}" loading="lazy">
+            <div class="galeri-item-overlay">
+              <span class="galeri-item-title">{{ dok.get_jenis_display }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>
+      <div class="col-lg-4">
+        <div class="card-custom p-4 mb-4">
+          <h3 style="font-family:var(--font-heading); font-size:1rem; margin-bottom:1rem;">Detail Program</h3>
+          <div class="mb-2 pb-2 border-bottom">
+            <small class="text-muted">Kategori</small>
+            <div class="fw-semibold">{{ program.get_kategori_display }}</div>
+          </div>
+          {% if program.sasaran %}
+          <div class="mb-2">
+            <small class="text-muted">Sasaran</small>
+            <div>{{ program.sasaran }}</div>
+          </div>
+          {% endif %}
+        </div>
+
+        <a href="{% url 'program:index' %}" class="btn-outline-green w-100 justify-content-center">
+          <i class="bi bi-arrow-left"></i> Semua Program
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

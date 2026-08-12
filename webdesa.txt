@@ -1,0 +1,1732 @@
+
+Concept of Jelajah Sumberagung
+PROJECT BRIEF & WEBSITE SPECIFICATION
+JELAJAH SUMBERAGUNG
+Tagline:
+Satu Ruang untuk Mengenal Sumberagung
+
+Jenis Website:
+Independent Village Information & Community Empowerment Portal
+
+Lokasi:
+Desa Sumberagung, Kecamatan Weleri, Kabupaten Kendal, Jawa Tengah
+
+Pengembang Awal:
+Tim KKN Universitas Diponegoro 2026
+
+Status:
+Website mandiri/non-resmi yang dikembangkan sebagai salah satu luaran program KKN.
+
+
+1. LATAR BELAKANG
+Tim KKN Universitas Diponegoro melaksanakan program KKN di Desa Sumberagung, Kecamatan Weleri, Kabupaten Kendal.
+
+Pada tahap awal, website direncanakan sebagai media untuk menampilkan hasil pendataan desa, khususnya data UMKM dan data kesehatan.
+
+Namun selama pelaksanaan KKN terdapat beberapa perubahan kondisi:
+
+Pendataan UMKM tidak berhasil mencakup seluruh UMKM desa, sehingga data yang tersedia merupakan data UMKM yang berhasil ditemui/berpartisipasi dalam program pendampingan KKN.
+Data kesehatan yang tersedia merupakan hasil kegiatan/skrining program kesehatan KKN, bukan data kesehatan seluruh masyarakat desa.
+Tim KKN tidak memperoleh akses untuk mengelola website resmi Pemerintah Desa Sumberagung.
+Website akhirnya dikembangkan sebagai website mandiri, bukan website resmi pemerintah desa.
+Website diharapkan tetap memiliki manfaat setelah periode KKN berakhir dan tidak hanya menjadi dokumentasi kegiatan mahasiswa.
+Berdasarkan kondisi tersebut, konsep website diarahkan dari "dashboard data desa" menjadi:
+
+Portal informasi, potensi, dokumentasi, dan pemberdayaan Desa Sumberagung.
+
+Website tidak dimaksudkan untuk menggantikan website resmi Pemerintah Desa dan tidak boleh memberikan kesan bahwa website merupakan kanal administratif resmi pemerintah desa.
+
+
+2. NAMA DAN BRANDING
+Nama
+Jelajah Sumberagung
+
+Tagline
+Satu Ruang untuk Mengenal Sumberagung
+
+Makna
+"Jelajah Sumberagung" dimaksudkan sebagai sebuah ruang digital untuk mengenal Desa Sumberagung dari berbagai sisi:
+
+profil desa,
+potensi,
+UMKM,
+masyarakat,
+kegiatan,
+edukasi,
+dokumentasi,
+dan hasil program pemberdayaan.
+Nama tidak menggunakan istilah seperti:
+
+Website Desa Sumberagung
+Portal Resmi Desa Sumberagung
+Pemerintah Desa Sumberagung
+Sistem Informasi Desa Sumberagung
+karena website ini bukan website resmi Pemerintah Desa.
+
+
+3. TUJUAN WEBSITE
+Tujuan utama:
+
+Menjadi ruang digital yang membantu masyarakat dan pengunjung mengenal Desa Sumberagung melalui informasi mengenai profil, potensi, UMKM, kegiatan, edukasi, dan dokumentasi pemberdayaan masyarakat.
+
+Tujuan khusus:
+
+Memperkenalkan Desa Sumberagung kepada masyarakat yang lebih luas.
+Menampilkan potensi desa secara menarik dan informatif.
+Mempromosikan UMKM yang berpartisipasi dalam program pendampingan KKN.
+Mengarsipkan hasil program pemberdayaan masyarakat.
+Menyediakan artikel dan materi edukasi yang dapat diakses kembali.
+Menyediakan dokumentasi kegiatan dan potensi desa.
+Menjadi wadah digital yang masih dapat dikembangkan setelah KKN selesai.
+
+4. TARGET PENGGUNA
+4.1 Masyarakat Desa
+Kebutuhan:
+
+mengetahui informasi dan potensi desa,
+membaca artikel,
+melihat kegiatan,
+mengakses materi edukasi,
+mengenal UMKM lokal.
+4.2 Masyarakat dari Luar Desa
+Kebutuhan:
+
+mengenal Sumberagung,
+mengetahui potensi desa,
+mengetahui UMKM,
+melihat dokumentasi,
+mengetahui lokasi dan informasi dasar desa.
+4.3 Pelaku UMKM
+Kebutuhan:
+
+mendapatkan exposure,
+memperkenalkan produk,
+menampilkan kontak/media sosial,
+menampilkan hasil pendampingan.
+4.4 Perangkat Desa / Pengelola Setelah KKN
+Kebutuhan:
+
+memiliki media publikasi tambahan,
+memperbarui artikel/kegiatan jika memungkinkan,
+mengarsipkan informasi dan dokumentasi.
+Catatan:
+Website tidak boleh bergantung pada pengelolaan aktif perangkat desa setiap hari. Fitur yang membutuhkan pembaruan rutin harus diminimalkan.
+
+4.5 KKN / Program Pemberdayaan Berikutnya
+Website dapat menjadi tempat untuk:
+
+melanjutkan publikasi,
+menambahkan program,
+memperbarui potensi,
+mengembangkan konten.
+
+5. POSITIONING WEBSITE
+Website ini BUKAN:
+
+website resmi Pemerintah Desa,
+sistem administrasi desa,
+sistem pelayanan surat,
+sistem kependudukan,
+database penduduk,
+sistem Posyandu,
+sistem monitoring kesehatan real-time,
+dashboard statistik resmi desa.
+Website ini adalah:
+
+Independent digital information and empowerment portal for Desa Sumberagung.
+
+
+6. VALUE PROPOSITION
+Value utama:
+
+"Satu ruang digital untuk mengenal Sumberagung, menemukan potensinya, mengenal produk lokalnya, serta melihat cerita dan kegiatan pemberdayaan masyarakatnya."
+
+Website harus memberikan alasan bagi pengguna untuk datang selain sekadar melihat informasi statis.
+
+Value utama yang ditawarkan:
+
+Discover
+Mengenal desa dan potensinya.
+
+Explore
+Menjelajahi UMKM, budaya, pertanian, dan berbagai potensi.
+
+Learn
+Membaca artikel dan mengakses materi edukasi.
+
+Connect
+Menemukan informasi kontak atau media sosial UMKM/program yang tersedia.
+
+Preserve
+Mengarsipkan dokumentasi dan hasil pemberdayaan.
+
+
+7. KONSEP INFORMASI UTAMA
+Website memiliki beberapa kelompok informasi:
+
+Profil Desa
+Potensi Desa
+UMKM Mitra Program KKN
+Insight Program Kesehatan
+Artikel/Berita
+Agenda/Kegiatan
+Galeri
+Program Pemberdayaan
+Pusat Edukasi/Download
+Video Profil
+Kontak/Lokasi
+
+8. STRUKTUR NAVIGASI UTAMA
+Rekomendasi navbar:
+
+HOME
+
+PROFIL
+
+POTENSI
+
+UMKM
+
+INSIGHT
+
+ARTIKEL
+
+GALERI
+
+EDUKASI
+
+TENTANG
+
+CTA opsional:
+
+Jelajahi Desa
+
+
+9. SITEMAP
+JELAJAH SUMBERAGUNG
+
+│
+
+├── Home
+
+│
+
+├── Profil
+
+│   ├── Tentang Sumberagung
+
+│   ├── Sejarah Desa
+
+│   ├── Kondisi & Wilayah
+
+│   ├── Demografi
+
+│   └── Lokasi
+
+│
+
+├── Potensi
+
+│   ├── Pertanian
+
+│   ├── Peternakan
+
+│   ├── UMKM
+
+│   ├── Budaya
+
+│   └── Potensi Lain
+
+│
+
+├── UMKM
+
+│   ├── Daftar UMKM Mitra
+
+│   └── Detail UMKM
+
+│
+
+├── Insight
+
+│   └── Hasil Kegiatan Posyandu/Kesehatan
+
+│
+
+├── Artikel
+
+│   ├── Semua Artikel
+
+│   └── Detail Artikel
+
+│
+
+├── Kegiatan
+
+│   ├── Agenda
+
+│   └── Arsip Kegiatan
+
+│
+
+├── Galeri
+
+│   ├── Potensi Desa
+
+│   ├── UMKM
+
+│   ├── Budaya
+
+│   ├── Masyarakat
+
+│   └── Program Pemberdayaan
+
+│
+
+├── Program
+
+│   ├── Program Pemberdayaan
+
+│   └── Program KKN
+
+│
+
+├── Edukasi
+
+│   ├── Modul
+
+│   ├── Poster
+
+│   ├── Leaflet
+
+│   ├── Panduan
+
+│   └── Media Edukasi
+
+│
+
+├── Video Profil
+
+│
+
+└── Tentang Website
+
+
+
+10. HALAMAN HOME
+Home harus berfungsi sebagai pintu masuk utama.
+
+Tujuan
+Dalam beberapa detik pertama pengguna harus memahami:
+
+website ini tentang apa,
+desa mana,
+apa yang menarik dari desa,
+apa yang bisa dijelajahi.
+Struktur yang disarankan
+10.1 Hero
+Tampilkan:
+
+Jelajah Sumberagung
+
+Satu Ruang untuk Mengenal Sumberagung
+
+Deskripsi singkat:
+
+Mengenal lebih dekat potensi, cerita, masyarakat, dan berbagai kegiatan pemberdayaan di Desa Sumberagung.
+
+CTA:
+
+Jelajahi Sumberagung
+
+CTA sekunder:
+
+Lihat Potensi
+
+Visual utama dapat menggunakan foto/video terbaik Desa Sumberagung.
+
+
+10.2 Video Profil
+Judul:
+
+Mengenal Sumberagung
+
+Tampilkan video profil desa.
+
+Deskripsi singkat.
+
+CTA:
+
+Tonton Video Profil
+
+
+10.3 Sekilas Sumberagung
+Berisi ringkasan:
+
+lokasi,
+kecamatan,
+kabupaten,
+karakteristik desa,
+potensi utama.
+Jangan membuat terlalu banyak statistik apabila data belum tervalidasi.
+
+
+10.4 Potensi Unggulan
+Tampilkan beberapa kategori:
+
+Pertanian
+Peternakan
+UMKM
+Budaya
+Setiap kartu mengarah ke halaman detail.
+
+
+10.5 UMKM Pilihan
+Tampilkan beberapa UMKM mitra program KKN.
+
+CTA:
+
+Lihat UMKM
+
+Catatan:
+Jangan menyebut bagian ini sebagai seluruh UMKM Desa Sumberagung.
+
+
+10.6 Cerita & Artikel
+Tampilkan 3–4 artikel terbaru.
+
+Kategori:
+
+Desa
+UMKM
+Kesehatan
+Lingkungan
+Edukasi
+
+10.7 Program Pemberdayaan
+Tampilkan ringkasan program yang pernah dilakukan.
+
+
+10.8 Galeri
+Tampilkan beberapa foto terbaik.
+
+CTA:
+
+Lihat Semua Galeri
+
+
+10.9 Edukasi
+Tampilkan beberapa materi yang dapat diunduh.
+
+
+10.10 Footer
+Isi:
+
+logo/nama Jelajah Sumberagung,
+tagline,
+lokasi,
+navigasi,
+kontak jika tersedia,
+social media jika tersedia,
+disclaimer bahwa website merupakan platform informasi mandiri.
+
+11. HALAMAN PROFIL
+Tujuan
+Memberikan informasi dasar mengenai Desa Sumberagung.
+
+Konten
+Identitas
+Desa Sumberagung
+Kecamatan Weleri
+Kabupaten Kendal
+Provinsi Jawa Tengah
+Data tambahan jika tersedia:
+
+kode pos,
+luas wilayah,
+jumlah dusun,
+koordinat.
+
+Sejarah
+Isi:
+
+asal-usul nama,
+sejarah berdirinya desa,
+perkembangan desa,
+cerita lokal.
+Jangan membuat informasi sejarah apabila belum diberikan sumber yang valid.
+
+
+Kondisi Wilayah
+Jika data tersedia:
+
+letak geografis,
+batas wilayah,
+topografi,
+kondisi lingkungan,
+penggunaan lahan.
+
+Demografi
+Jika tersedia dan diizinkan untuk dipublikasikan:
+
+jumlah penduduk,
+jumlah KK,
+kelompok usia,
+jenis kelamin,
+jumlah dusun.
+Gunakan data resmi/terverifikasi.
+
+
+Lokasi
+Tampilkan:
+
+alamat,
+peta,
+Google Maps,
+petunjuk lokasi.
+
+12. HALAMAN POTENSI DESA
+Ini merupakan salah satu halaman utama.
+
+Tujuan
+Menampilkan berbagai potensi Desa Sumberagung secara visual dan informatif.
+
+Kategori
+Pertanian
+Informasi yang dapat ditampilkan:
+
+tembakau,
+padi,
+jagung,
+cabai,
+singkong,
+ubi,
+kacang hijau,
+kedelai,
+sayuran,
+buah-buahan.
+Daftar komoditas harus disesuaikan dengan data lapangan yang telah diverifikasi.
+
+
+Peternakan
+Potensi yang disebutkan dalam LRK:
+
+sapi,
+kambing,
+ayam,
+itik,
+burung puyuh.
+
+UMKM
+Tampilkan ringkasan dan arahkan ke katalog UMKM.
+
+
+Budaya
+Contoh yang telah menjadi bagian dari eksplorasi KKN:
+
+Barong/Barongan.
+Tambahkan budaya lain hanya jika telah diverifikasi oleh masyarakat/perangkat desa.
+
+
+Potensi Lain
+Dapat ditambahkan jika ditemukan selama proses KKN.
+
+
+13. HALAMAN UMKM
+Nama halaman
+UMKM Mitra Program KKN
+
+atau:
+
+Katalog UMKM Pendampingan
+
+JANGAN menggunakan:
+
+"Database Seluruh UMKM Desa Sumberagung"
+
+karena data tidak berasal dari sensus seluruh UMKM.
+
+
+Disclaimer
+Tampilkan informasi seperti:
+
+Data UMKM pada halaman ini merupakan UMKM yang berpartisipasi atau terjangkau dalam program pendampingan KKN dan tidak dimaksudkan sebagai daftar seluruh UMKM yang terdapat di Desa Sumberagung.
+
+
+Data setiap UMKM
+Jika tersedia:
+
+nama usaha,
+nama pemilik,
+kategori,
+produk,
+deskripsi,
+lokasi/dusun,
+nomor kontak yang telah mendapat izin untuk dipublikasikan,
+WhatsApp,
+Instagram,
+marketplace,
+Google Maps,
+QRIS,
+foto produk,
+logo,
+hasil pendampingan.
+
+Detail UMKM
+Struktur:
+
+Nama UMKM
+
+Foto utama
+
+Deskripsi
+
+Produk unggulan
+
+Informasi usaha
+
+Hasil pendampingan
+
+Kontak/media sosial
+
+Lokasi
+
+
+Hasil Pendampingan
+Jika tersedia, dapat ditampilkan sebagai:
+
+BEFORE → AFTER
+
+Contoh:
+
+branding,
+kemasan,
+label,
+QRIS,
+digital marketing,
+katalog.
+Fitur ini lebih baik daripada hanya menampilkan tabel data UMKM.
+
+
+14. HALAMAN INSIGHT KESEHATAN
+Tujuan
+Menampilkan hasil kegiatan Posyandu/skrining kesehatan sebagai insight dari program KKN.
+
+Fokus
+Program Sosial Kemasyarakatan/Saintek berfokus pada kegiatan kesehatan, termasuk Posyandu Lansia.
+
+Yang dapat ditampilkan
+Jika data tersedia:
+
+jumlah peserta,
+rentang usia,
+tekanan darah,
+gula darah,
+kolesterol,
+asam urat,
+indikator lain yang memang diperiksa.
+Gunakan data agregat.
+
+JANGAN menampilkan data pribadi peserta.
+
+Jangan menampilkan:
+
+nama,
+NIK,
+nomor telepon,
+alamat lengkap,
+identitas individu,
+rekam medis individu.
+
+Contoh Insight
+Jika data memang mendukung:
+
+"Berdasarkan hasil skrining peserta Posyandu Lansia Dusun [X] pada [tanggal], sebagian besar peserta yang mengikuti pemeriksaan menunjukkan kadar gula darah di atas rentang yang digunakan sebagai acuan pemeriksaan."
+
+Jangan menulis:
+
+"Mayoritas lansia Desa Sumberagung memiliki gula darah tinggi."
+
+karena data kegiatan tidak otomatis merepresentasikan seluruh lansia desa.
+
+
+Disclaimer wajib
+Data pada halaman ini merupakan ringkasan hasil kegiatan/skrining peserta program dan tidak merepresentasikan kondisi kesehatan seluruh masyarakat Desa Sumberagung. Informasi ditampilkan untuk tujuan dokumentasi dan edukasi, bukan sebagai diagnosis medis.
+
+
+15. HALAMAN ARTIKEL
+Tujuan
+Menjadi sumber informasi yang dapat terus diperbarui.
+
+Kategori
+Desa
+UMKM
+Kesehatan
+Lingkungan
+Pertanian
+Edukasi
+Pemberdayaan
+Kegiatan
+
+Struktur artikel
+Judul
+Thumbnail
+Kategori
+Tanggal
+Penulis/sumber
+Isi
+Foto
+Related article
+
+Artikel awal
+Setiap anggota/program diharapkan dapat menyumbangkan minimal satu artikel jika memungkinkan.
+
+Contoh topik:
+
+Mengenal potensi pertanian Sumberagung
+Peran digitalisasi bagi UMKM
+Pentingnya QRIS bagi UMKM
+Edukasi keamanan pangan
+Kesehatan lansia
+PHBS
+Pengelolaan sampah
+Biopori
+Pestisida nabati
+Kegiatan pemberdayaan masyarakat.
+
+16. HALAMAN KEGIATAN / AGENDA
+Fitur ini harus dibuat sederhana.
+
+Jangan membuat sistem kalender kompleks.
+
+Dapat berisi:
+
+kegiatan masyarakat,
+kegiatan Posyandu,
+kegiatan pemberdayaan,
+kegiatan desa,
+kegiatan KKN.
+Jika tidak ada pengelola aktif setelah KKN, halaman tetap dapat berfungsi sebagai arsip kegiatan.
+
+
+17. HALAMAN GALERI
+Kategori
+Potensi Desa
+Pertanian
+UMKM
+Budaya
+Masyarakat
+Kegiatan
+Program Pemberdayaan
+KKN
+Setiap item
+foto,
+judul,
+deskripsi singkat,
+kategori,
+tanggal jika tersedia.
+Foto harus dioptimalkan agar website tidak terlalu berat.
+
+
+18. HALAMAN PROGRAM PEMBERDAYAAN
+Tujuannya bukan membuat website terasa seperti "website KKN".
+
+Nama halaman yang disarankan:
+
+Program Pemberdayaan
+
+Kemudian setiap program dapat diberi keterangan:
+
+nama program,
+latar belakang,
+permasalahan,
+tujuan,
+sasaran,
+pelaksanaan,
+hasil,
+luaran,
+dokumentasi.
+
+Program yang dapat ditampilkan
+Program dari LRK yang relevan dapat dimasukkan sesuai hasil pelaksanaan.
+
+Contohnya:
+
+Program UMKM
+QRIS
+branding
+katalog
+kemasan
+keamanan pangan
+pendampingan usaha
+digitalisasi.
+Program Kesehatan
+Posyandu Lansia
+skrining kesehatan
+PMT
+edukasi.
+Program Lingkungan
+sampah,
+biopori,
+pestisida nabati,
+kegiatan lingkungan.
+Program Edukasi
+edukasi anak,
+media pembelajaran,
+modul,
+flashcard,
+playbook.
+Catatan:
+Konten akhir harus mengikuti program yang benar-benar dilaksanakan, bukan hanya rencana LRK.
+
+
+19. HALAMAN EDUKASI / DOWNLOAD
+Tujuan
+Menjadi repository publik untuk materi yang memang boleh dibagikan.
+
+Kategori
+Modul
+Panduan
+Poster
+Leaflet
+Booklet
+Flashcard
+Playbook
+Media edukasi
+Setiap file
+judul,
+kategori,
+deskripsi,
+pembuat/program,
+tanggal,
+format,
+ukuran,
+tombol download.
+
+20. VIDEO PROFIL
+Video profil merupakan salah satu aset penting.
+
+Halaman dapat berisi:
+
+video,
+sinopsis,
+highlight,
+informasi produksi,
+link video jika tersedia.
+Video juga dapat ditampilkan di Home.
+
+
+21. HALAMAN TENTANG WEBSITE
+Karena website bukan website resmi desa, halaman ini penting untuk transparansi.
+
+Isi:
+
+Jelajah Sumberagung merupakan platform informasi mandiri yang dikembangkan sebagai salah satu luaran program KKN Universitas Diponegoro di Desa Sumberagung, Kecamatan Weleri, Kabupaten Kendal.
+
+Jelaskan bahwa website bertujuan untuk:
+
+memperkenalkan potensi,
+mendokumentasikan kegiatan,
+mempublikasikan hasil pemberdayaan,
+menyediakan materi edukasi.
+Tambahkan disclaimer:
+
+Website ini bukan merupakan website resmi Pemerintah Desa Sumberagung dan tidak menyediakan layanan administrasi pemerintahan desa.
+
+Jika website diserahkan kepada pihak lain setelah KKN, bagian ini dapat diperbarui.
+
+
+22. FITUR PENCARIAN
+Jika memungkinkan, sediakan search.
+
+Pengguna dapat mencari:
+
+artikel,
+UMKM,
+potensi,
+edukasi.
+Tidak harus kompleks.
+
+
+23. FITUR FILTER UMKM
+Jika jumlah UMKM cukup banyak:
+
+Filter berdasarkan:
+
+kategori,
+dusun,
+produk.
+Tambahkan search berdasarkan nama UMKM.
+
+Jika jumlah data sangat sedikit, filter kompleks tidak perlu dipaksakan.
+
+
+24. ADMIN PANEL
+Website sebaiknya memiliki sistem pengelolaan konten.
+
+Minimal admin dapat:
+
+menambah artikel,
+mengedit artikel,
+menghapus artikel,
+menambah UMKM,
+mengedit UMKM,
+menambah galeri,
+mengunggah file edukasi,
+mengelola kegiatan,
+mengelola program.
+Tidak perlu membuat sistem admin yang terlalu kompleks.
+
+
+25. CONTENT MANAGEMENT
+Jenis konten yang idealnya bersifat dinamis:
+
+Artikel
+UMKM
+Galeri
+Program
+Kegiatan
+File edukasi
+Jenis konten yang relatif statis:
+
+Profil
+Sejarah
+Tentang website
+Potensi dasar
+Kontak
+
+26. PRIORITAS FITUR
+MVP / WAJIB
+Home
+Profil Desa
+Potensi Desa
+UMKM Mitra
+Artikel
+Galeri
+Program Pemberdayaan
+Edukasi/Download
+Video Profil
+Tentang Website
+Admin/CMS sederhana
+
+PRIORITAS 2
+Insight kesehatan
+Agenda/kegiatan
+Search
+Filter UMKM
+Peta/lokasi
+Related articles
+
+PRIORITAS 3
+Jika waktu mencukupi:
+
+statistik interaktif,
+peta interaktif,
+pencarian lebih advanced,
+dashboard insight,
+analytics,
+fitur kontribusi masyarakat,
+integrasi media sosial.
+Jangan mengerjakan prioritas 3 sebelum MVP selesai.
+
+
+27. FITUR YANG TIDAK PERLU DIBUAT
+Untuk menjaga sustainability, jangan membuat:
+
+sistem administrasi desa,
+surat online,
+database kependudukan,
+sistem keuangan desa,
+sistem Posyandu lengkap,
+rekam medis,
+sistem monitoring stunting real-time,
+sistem pengaduan kompleks,
+marketplace UMKM kompleks,
+login masyarakat,
+fitur yang membutuhkan input harian tanpa pengelola.
+
+28. DATA UMKM — ATURAN PENTING
+Data UMKM harus diperlakukan sebagai:
+
+data UMKM mitra/partisipan program pendampingan KKN
+
+bukan:
+
+database seluruh UMKM desa.
+
+Setiap data kontak, foto, nama pemilik, nomor WhatsApp, QRIS, atau informasi bisnis harus dipublikasikan hanya jika pemilik memberikan izin.
+
+
+29. DATA KESEHATAN — ATURAN PENTING
+Data kesehatan harus:
+
+agregat,
+anonim,
+tidak mengidentifikasi individu,
+memiliki konteks tanggal/kegiatan,
+memiliki jumlah peserta,
+memiliki disclaimer.
+Data tidak boleh diposisikan sebagai statistik kesehatan resmi desa kecuali terdapat sumber resmi dan izin yang sesuai.
+
+
+30. KONTEN YANG HARUS DIKUMPULKAN
+Dari Perangkat Desa
+Profil
+sejarah desa,
+profil desa,
+luas wilayah,
+pembagian dusun,
+data demografi yang boleh dipublikasikan,
+alamat,
+kontak,
+koordinat,
+informasi potensi,
+informasi budaya,
+fasilitas umum.
+Validasi
+Perangkat desa diharapkan memvalidasi informasi profil dan potensi sebelum dipublikasikan.
+
+
+31. DATA DARI ANGGOTA KKN
+Setiap anggota/program diminta menyerahkan:
+
+A. Informasi Program
+nama program,
+latar belakang,
+permasalahan,
+tujuan,
+sasaran,
+pelaksanaan,
+hasil,
+dampak,
+luaran.
+B. Dokumentasi
+foto original,
+video,
+foto before-after jika ada.
+C. Luaran
+PDF,
+DOCX,
+PPTX,
+Canva,
+poster,
+modul,
+booklet,
+leaflet,
+playbook,
+flashcard,
+panduan,
+media edukasi.
+D. Data
+data agregat,
+tabel,
+grafik,
+insight.
+E. Artikel
+Jika memungkinkan, setiap program menyediakan artikel 500–800 kata.
+
+
+32. STRUKTUR FOLDER CONTENT COLLECTION
+Direkomendasikan menggunakan struktur:
+
+CONTENT/
+
+│
+
+├── 01_PROFIL_DESA/
+
+│   ├── Sejarah/
+
+│   ├── Data_Desa/
+
+│   ├── Potensi/
+
+│   └── Kontak/
+
+│
+
+├── 02_POTENSI/
+
+│   ├── Pertanian/
+
+│   ├── Peternakan/
+
+│   ├── UMKM/
+
+│   └── Budaya/
+
+│
+
+├── 03_UMKM/
+
+│   ├── Data/
+
+│   ├── Foto_Produk/
+
+│   ├── Logo/
+
+│   └── Pendampingan/
+
+│
+
+├── 04_KESEHATAN/
+
+│   ├── Data_Agregat/
+
+│   ├── Insight/
+
+│   └── Dokumentasi/
+
+│
+
+├── 05_ARTIKEL/
+
+│
+
+├── 06_KEGIATAN/
+
+│
+
+├── 07_GALERI/
+
+│
+
+├── 08_PROGRAM/
+
+│
+
+├── 09_EDUKASI/
+
+│
+
+├── 10_VIDEO_PROFIL/
+
+│
+
+└── 11_BRANDING/
+
+    ├── Logo/
+
+    ├── Font/
+
+    └── Assets/
+
+
+
+33. USER FLOW UTAMA
+Pengunjung baru
+Home
+
+ ↓
+
+Video/Profil
+
+ ↓
+
+Potensi
+
+ ↓
+
+UMKM
+
+ ↓
+
+Detail UMKM
+
+ ↓
+
+Kontak/Media Sosial
+
+
+
+Pengunjung yang ingin membaca informasi
+Home
+
+ ↓
+
+Artikel
+
+ ↓
+
+Kategori
+
+ ↓
+
+Detail Artikel
+
+ ↓
+
+Artikel Terkait
+
+
+
+Pengunjung yang mencari materi
+Home
+
+ ↓
+
+Edukasi
+
+ ↓
+
+Kategori
+
+ ↓
+
+Detail Materi
+
+ ↓
+
+Download
+
+
+
+Pengunjung yang ingin mengenal desa
+Home
+
+ ↓
+
+Profil
+
+ ↓
+
+Potensi
+
+ ↓
+
+Galeri
+
+ ↓
+
+Video Profil
+
+
+
+34. ADMIN FLOW
+Login Admin
+
+ ↓
+
+Dashboard
+
+ ↓
+
+Pilih Konten
+
+ ├── Artikel
+
+ ├── UMKM
+
+ ├── Galeri
+
+ ├── Program
+
+ ├── Kegiatan
+
+ └── Edukasi
+
+ ↓
+
+Tambah/Edit
+
+ ↓
+
+Preview
+
+ ↓
+
+Publish
+
+
+
+35. KEBUTUHAN UX
+Website harus:
+
+mobile friendly,
+ringan,
+mudah dinavigasi,
+tidak terlalu banyak teks pada halaman awal,
+menggunakan visual berkualitas,
+memiliki CTA yang jelas,
+memiliki konsistensi desain,
+memiliki loading yang wajar,
+mudah digunakan oleh pengguna non-teknis.
+Prioritas perangkat:
+
+Smartphone
+Laptop/Desktop
+Tablet
+
+36. PRINSIP DESAIN
+Kesan yang diinginkan:
+
+modern,
+hangat,
+lokal,
+informatif,
+tidak terlalu formal,
+tidak seperti portal pemerintahan yang kaku,
+tetap profesional.
+Website harus menonjolkan:
+
+fotografi,
+cerita,
+manusia,
+produk,
+potensi,
+kegiatan.
+Jangan membuat homepage penuh tabel dan angka.
+
+
+37. RESPONSIVE DESIGN
+Minimal harus diuji pada:
+
+mobile,
+tablet,
+desktop.
+Semua elemen harus responsif:
+
+navbar,
+hero,
+card,
+gallery,
+table,
+chart,
+video,
+image,
+footer.
+
+38. SEO DASAR
+Minimal:
+
+title setiap halaman,
+meta description,
+heading yang terstruktur,
+alt text gambar,
+URL yang readable,
+sitemap,
+favicon,
+Open Graph image,
+robots.txt.
+Target pencarian yang relevan misalnya:
+
+Desa Sumberagung Weleri
+Sumberagung Kendal
+UMKM Sumberagung
+Potensi Desa Sumberagung
+Kegiatan Desa Sumberagung
+Jangan membuat klaim yang menyesatkan mengenai status resmi website.
+
+
+39. PERFORMANCE
+Perhatikan:
+
+kompresi gambar,
+lazy loading,
+ukuran video,
+caching,
+jumlah JavaScript,
+ukuran CSS,
+penggunaan CDN jika diperlukan.
+Video sebaiknya tidak langsung di-host sebagai file besar jika hosting terbatas. Embed dari platform video dapat dipertimbangkan.
+
+
+40. SECURITY
+Minimal:
+
+admin authentication,
+password hashing,
+CSRF protection,
+validasi upload,
+pembatasan tipe file,
+pembatasan ukuran file,
+environment variables untuk secret,
+jangan menyimpan credential di repository.
+
+41. PRIVACY
+Website tidak boleh sembarangan mempublikasikan:
+
+NIK,
+nomor KK,
+data kesehatan individu,
+data pribadi anak,
+nomor telepon tanpa izin,
+alamat pribadi tanpa izin,
+informasi sensitif lainnya.
+Semua konten yang menampilkan individu harus mempertimbangkan izin publikasi, terutama foto anak dan data kesehatan.
+
+
+42. SUSTAINABILITY
+Sustainability merupakan requirement utama.
+
+Website harus tetap berguna walaupun:
+
+KKN selesai,
+mahasiswa tidak lagi berada di desa,
+tidak ada pembaruan setiap hari.
+Oleh karena itu:
+
+Konten evergreen
+profil,
+sejarah,
+potensi,
+video profil,
+edukasi,
+katalog UMKM.
+Konten yang dapat diperbarui
+artikel,
+galeri,
+kegiatan,
+UMKM,
+program.
+Konten yang tidak dijadikan inti
+dashboard real-time,
+data kesehatan real-time,
+statistik yang membutuhkan input rutin.
+
+43. STRATEGI AGAR WEBSITE TETAP HIDUP SETELAH KKN
+Programmer harus menyediakan CMS/admin sederhana.
+
+Dokumentasi harus dibuat untuk:
+
+login admin,
+menambah artikel,
+mengedit artikel,
+menghapus artikel,
+menambah UMKM,
+mengunggah foto,
+mengunggah materi,
+backup data.
+Jika memungkinkan, buat dokumentasi handover.
+
+
+44. TEKNOLOGI YANG DIRENCANAKAN
+Teknologi awal yang diinginkan:
+
+VS Code
+Python
+Django
+HTML
+CSS
+JavaScript
+Bootstrap 5
+SQLite untuk development
+Database production dapat dipertimbangkan menggunakan PostgreSQL jika diperlukan.
+
+Programmer dapat mengusulkan perubahan teknologi jika ada alasan teknis yang kuat.
+
+Prioritas bukan menggunakan teknologi paling kompleks, tetapi menghasilkan website yang:
+
+stabil,
+mudah dirawat,
+mudah dikembangkan,
+murah,
+mudah di-handover.
+
+45. DEVELOPMENT APPROACH
+Development dilakukan bertahap.
+
+Phase 1
+Setup project.
+
+Phase 2
+Layout dan design system.
+
+Phase 3
+Home.
+
+Phase 4
+Profil.
+
+Phase 5
+Potensi.
+
+Phase 6
+UMKM.
+
+Phase 7
+Artikel.
+
+Phase 8
+Galeri.
+
+Phase 9
+Program.
+
+Phase 10
+Edukasi.
+
+Phase 11
+Insight kesehatan.
+
+Phase 12
+Admin/CMS.
+
+Phase 13
+Testing.
+
+Phase 14
+Deployment.
+
+Phase 15
+Handover.
+
+
+46. MINIMUM ACCEPTANCE CRITERIA
+Website dianggap siap digunakan jika:
+
+Produk
+semua halaman MVP tersedia,
+navigasi berfungsi,
+informasi utama tersedia,
+konten tidak kosong.
+UX
+mobile responsive,
+desktop responsive,
+navigasi jelas,
+tidak ada broken link.
+Data
+data UMKM memiliki konteks,
+data kesehatan memiliki disclaimer,
+data desa telah divalidasi,
+data pribadi tidak terekspos.
+Admin
+admin dapat mengelola konten,
+upload file berfungsi,
+artikel dapat dipublikasikan.
+Technical
+website dapat diakses online,
+HTTPS aktif,
+tidak ada error kritis,
+database dapat di-backup.
+Handover
+tersedia dokumentasi,
+tersedia credential yang diserahkan melalui cara aman,
+tersedia panduan pengelolaan.
+
+47. DATA YANG BELUM BOLEH DIASUMSIKAN PROGRAMMER
+Programmer TIDAK boleh mengarang:
+
+sejarah desa,
+jumlah penduduk,
+jumlah UMKM,
+jumlah dusun,
+luas wilayah,
+statistik kesehatan,
+jumlah peserta,
+data ekonomi,
+informasi budaya,
+nama pejabat,
+kontak.
+Jika data belum diberikan:
+
+gunakan placeholder.
+
+Contoh:
+
+[DATA SEJARAH DESA BELUM TERSEDIA]
+
+
+bukan membuat informasi fiktif.
+
+
+48. STATUS DATA
+Gunakan status:
+
+READY
+
+NEED VALIDATION
+
+NEED DATA
+
+OPTIONAL
+
+NOT USED
+
+
+Contoh:
+
+Profil Desa → NEED VALIDATION
+
+Sejarah → NEED DATA
+
+UMKM → NEED DATA
+
+Video Profil → READY
+
+Galeri → NEED DATA
+
+Insight Kesehatan → NEED VALIDATION
+
+
+
+49. OUTPUT YANG DIHARAPKAN DARI PROGRAMMER
+Programmer diharapkan menghasilkan:
+
+Website production-ready.
+Source code.
+Database.
+Admin panel.
+Responsive UI.
+Deployment.
+Documentation.
+Backup procedure.
+Handover guide.
+Basic technical documentation.
+
+50. CATATAN PENTING UNTUK PROGRAMMER
+Jangan mulai dari database.
+
+Jangan mulai dari coding.
+
+Urutan yang diharapkan:
+
+Understand Brief
+
+        ↓
+
+Confirm Requirements
+
+        ↓
+
+Sitemap
+
+        ↓
+
+User Flow
+
+        ↓
+
+Wireframe
+
+        ↓
+
+UI Design
+
+        ↓
+
+Database Design
+
+        ↓
+
+Development
+
+        ↓
+
+Content Integration
+
+        ↓
+
+Testing
+
+        ↓
+
+Deployment
+
+        ↓
+
+Documentation
+
+        ↓
+
+Handover
+
+
+Jika terdapat fitur yang menurut programmer tidak realistis atau berisiko terhadap sustainability, programmer diharapkan menyampaikan alternatif sebelum implementasi.
+
+
+51. DEFINISI PRODUK FINAL
+Jelajah Sumberagung bukan sekadar website dokumentasi KKN.
+
+Produk final diharapkan menjadi:
+
+Sebuah ruang digital mandiri untuk mengenal Desa Sumberagung melalui profil, potensi, UMKM mitra, cerita masyarakat, kegiatan, hasil pemberdayaan, serta sumber edukasi yang dapat terus dikembangkan setelah program KKN selesai.
+
+KKN adalah pihak yang menginisiasi dan mengisi konten awal.
+
+Namun konsep produk tidak boleh bergantung sepenuhnya pada keberadaan KKN.
+
+
+52. PRIORITAS AKHIR
+Jika waktu terbatas, prioritaskan:
+
+Home
+Profil Desa
+Potensi Desa
+UMKM Mitra
+Artikel
+Galeri
+Edukasi
+Program Pemberdayaan
+Video Profil
+Admin
+Kemudian:
+
+Insight Kesehatan
+Agenda
+Search/filter
+Fitur tambahan lainnya.
+Lebih baik memiliki 10 fitur yang matang dan sustainable daripada 20 fitur yang akhirnya tidak dapat dikelola.
+
+
+53. BRANDING FINAL
+JELAJAH SUMBERAGUNG
+
+Satu Ruang untuk Mengenal Sumberagung.
+
+Core message:
+
+Discover the place. Explore the potential. Connect with the community.
+
+Bahasa utama website: Bahasa Indonesia.
+
+Gaya bahasa:
+
+informatif,
+hangat,
+sederhana,
+tidak terlalu birokratis,
+tidak terlalu formal,
+tetap profesional.
+
+54. STATUS PROYEK
+Tahap saat ini:
+
+CONTENT COLLECTION & PRODUCT PLANNING
+
+Belum masuk tahap coding.
+
+Prioritas pekerjaan saat ini:
+
+Mengumpulkan data profil desa.
+Mengumpulkan data potensi.
+Mengumpulkan data UMKM.
+Mengumpulkan hasil kegiatan kesehatan dalam bentuk agregat.
+Mengumpulkan seluruh luaran program.
+Mengumpulkan artikel.
+Mengumpulkan foto/video.
+Memvalidasi informasi dengan pihak desa.
+Menyusun sitemap final.
+Membuat wireframe.
+Baru kemudian masuk development.
+
+55. CATATAN UNTUK SERAH TERIMA
+Karena website ini awalnya dikembangkan oleh mahasiswa KKN, programmer harus menghindari ketergantungan pada satu mahasiswa tertentu.
+
+Dokumentasi harus memungkinkan orang lain memahami:
+
+cara menjalankan project,
+cara mengubah konten,
+cara mengelola database,
+cara melakukan backup,
+cara melakukan deployment,
+cara melakukan maintenance.
+Website harus dapat dilanjutkan oleh:
+
+perangkat desa,
+mahasiswa KKN berikutnya,
+pengelola yang ditunjuk,
+atau developer lain.
+
+END OF PROJECT BRIEF
+JELAJAH SUMBERAGUNG

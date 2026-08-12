@@ -1,0 +1,174 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static jazzmin %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            
+            <!-- Profil Card -->
+            <div class="col-md-6">
+                <div class="onyx-dashboard-card">
+                    <div class="onyx-dashboard-header">
+                        <h3>Profil</h3>
+                    </div>
+                    <div>
+                        <div class="onyx-dashboard-row">
+                            <span class="onyx-row-title">Fasilitas Desa</span>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'admin:profil_fasilitasdesa_add' %}" class="onyx-badge-btn onyx-btn-tambah" style="margin-right: 5px;">Tambah</a>
+                                <a href="{% url 'admin:profil_fasilitasdesa_changelist' %}" class="onyx-badge-btn onyx-btn-ubah">Ubah</a>
+                            </div>
+                        </div>
+                        <div class="onyx-dashboard-row">
+                            <span class="onyx-row-title">Profil Desa</span>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'admin:profil_profildesa_changelist' %}" class="onyx-badge-btn onyx-btn-ubah">Ubah</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program Card -->
+            <div class="col-md-6">
+                <div class="onyx-dashboard-card">
+                    <div class="onyx-dashboard-header">
+                        <h3>Program</h3>
+                    </div>
+                    <div>
+                        <div class="onyx-dashboard-row">
+                            <span class="onyx-row-title">Program Pemberdayaan</span>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'admin:program_program_add' %}" class="onyx-badge-btn onyx-btn-tambah" style="margin-right: 5px;">Tambah</a>
+                                <a href="{% url 'admin:program_program_changelist' %}" class="onyx-badge-btn onyx-btn-ubah">Ubah</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Potensi Card -->
+            <div class="col-md-6">
+                <div class="onyx-dashboard-card">
+                    <div class="onyx-dashboard-header">
+                        <h3>Potensi</h3>
+                    </div>
+                    <div>
+                        <div class="onyx-dashboard-row">
+                            <span class="onyx-row-title">Item Potensi</span>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'admin:potensi_itempotensi_add' %}" class="onyx-badge-btn onyx-btn-tambah" style="margin-right: 5px;">Tambah</a>
+                                <a href="{% url 'admin:potensi_itempotensi_changelist' %}" class="onyx-badge-btn onyx-btn-ubah">Ubah</a>
+                            </div>
+                        </div>
+                        <div class="onyx-dashboard-row">
+                            <span class="onyx-row-title">Kategori Potensi</span>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'admin:potensi_kategoripotensi_add' %}" class="onyx-badge-btn onyx-btn-tambah" style="margin-right: 5px;">Tambah</a>
+                                <a href="{% url 'admin:potensi_kategoripotensi_changelist' %}" class="onyx-badge-btn onyx-btn-ubah">Ubah</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edukasi Card -->
+            <div class="col-md-6">
+                <div class="onyx-dashboard-card">
+                    <div class="onyx-dashboard-header">
+                        <h3>Edukasi</h3>
+                    </div>
+                    <div>
+                        <div class="onyx-dashboard-row">
+                            <span class="onyx-row-title">Item Edukasi</span>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'admin:edukasi_itemedukasi_add' %}" class="onyx-badge-btn onyx-btn-tambah" style="margin-right: 5px;">Tambah</a>
+                                <a href="{% url 'admin:edukasi_itemedukasi_changelist' %}" class="onyx-badge-btn onyx-btn-ubah">Ubah</a>
+                            </div>
+                        </div>
+                        <div class="onyx-dashboard-row">
+                            <span class="onyx-row-title">Kategori Edukasi</span>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'admin:edukasi_kategoriedukasi_add' %}" class="onyx-badge-btn onyx-btn-tambah" style="margin-right: 5px;">Tambah</a>
+                                <a href="{% url 'admin:edukasi_kategoriedukasi_changelist' %}" class="onyx-badge-btn onyx-btn-ubah">Ubah</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insight Card -->
+            <div class="col-md-6">
+                <div class="onyx-dashboard-card">
+                    <div class="onyx-dashboard-header">
+                        <h3>Insight</h3>
+                    </div>
+                    <div>
+                        <div class="onyx-dashboard-row">
+                            <span class="onyx-row-title">Data Event Kesehatan</span>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'admin:insight_eventkesehatan_add' %}" class="onyx-badge-btn onyx-btn-tambah" style="margin-right: 5px;">Tambah</a>
+                                <a href="{% url 'admin:insight_eventkesehatan_changelist' %}" class="onyx-badge-btn onyx-btn-ubah">Ubah</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UMKM Card -->
+            <div class="col-md-6">
+                <div class="onyx-dashboard-card">
+                    <div class="onyx-dashboard-header">
+                        <h3>Umkm</h3>
+                    </div>
+                    <div>
+                        <div class="onyx-dashboard-row">
+                            <span class="onyx-row-title">Kategori UMKM</span>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'admin:umkm_kategoriumkm_add' %}" class="onyx-badge-btn onyx-btn-tambah" style="margin-right: 5px;">Tambah</a>
+                                <a href="{% url 'admin:umkm_kategoriumkm_changelist' %}" class="onyx-badge-btn onyx-btn-ubah">Ubah</a>
+                            </div>
+                        </div>
+                        <div class="onyx-dashboard-row">
+                            <span class="onyx-row-title">UMKM Mitra</span>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'admin:umkm_umkm_add' %}" class="onyx-badge-btn onyx-btn-tambah" style="margin-right: 5px;">Tambah</a>
+                                <a href="{% url 'admin:umkm_umkm_changelist' %}" class="onyx-badge-btn onyx-btn-ubah">Ubah</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- Sidebar / Recent Actions -->
+    <div class="col-lg-4">
+        <h2 style="font-size:1.2rem; margin-bottom:1rem; font-weight:600;">Tindakan terbaru</h2>
+        <div class="onyx-dashboard-card" style="min-height: 200px; display: flex; align-items: center; justify-content: center;">
+            {% load log %}
+            {% get_admin_log 10 as admin_log for_user user %}
+            {% if not admin_log %}
+                <p style="color: #64748b; margin:0;">Tidak ada yang tersedia</p>
+            {% else %}
+                <ul class="list-group list-group-flush w-100" style="background:transparent;">
+                {% for entry in admin_log %}
+                    <li class="list-group-item" style="background:transparent; border-color:#3c4a42; color:#dde4dd; font-size:0.875rem;">
+                        {% if entry.is_addition %}
+                            <i class="fas fa-plus text-success"></i>
+                        {% elif entry.is_change %}
+                            <i class="fas fa-edit text-info"></i>
+                        {% elif entry.is_deletion %}
+                            <i class="fas fa-trash text-danger"></i>
+                        {% endif %}
+                        {{ entry.object_repr }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

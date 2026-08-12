@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}{{ artikel.judul }}{% endblock %}
+{% block meta_description %}{{ artikel.ringkasan|default:artikel.judul }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'artikel:index' %}">Artikel</a></li>
+        <li class="breadcrumb-item active">{{ artikel.judul|truncatewords:5 }}</li>
+      </ol>
+    </nav>
+    {% if artikel.kategori %}
+    <span class="hero-badge mb-2">{{ artikel.kategori.nama }}</span>
+    {% endif %}
+    <h1 class="page-hero-title" style="max-width:700px;">{{ artikel.judul }}</h1>
+    <p class="page-hero-sub">
+      {% if artikel.penulis %}<i class="bi bi-person me-1"></i>{{ artikel.penulis }} &nbsp;·&nbsp;{% endif %}
+      <i class="bi bi-calendar3 me-1"></i>{{ artikel.tanggal_publish|date:"j F Y" }}
+    </p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-8">
+        {% if artikel.thumbnail %}
+        <img src="{{ artikel.thumbnail.url }}" alt="{{ artikel.judul }}"
+             class="img-fluid rounded-custom shadow mb-4" style="width:100%; max-height:480px; object-fit:cover;">
+        {% endif %}
+
+        <div class="content-html article-body">
+          {{ artikel.isi|safe }}
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        {# Related Articles #}
+        {% if related %}
+        <div class="card-custom p-4 mb-4">
+          <h3 style="font-family:var(--font-heading); font-size:1rem; margin-bottom:1rem;">Artikel Terkait</h3>
+          {% for rel in related %}
+          <a href="{% url 'artikel:detail' rel.slug %}" class="d-flex gap-2 align-items-start text-dark text-decoration-none mb-3 pb-3 border-bottom">
+            {% if rel.thumbnail %}
+            <img src="{{ rel.thumbnail.url }}" style="width:60px; height:50px; object-fit:cover; border-radius:0.5rem; flex-shrink:0;" loading="lazy" alt="{{ rel.judul }}">
+            {% endif %}
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; line-height:1.3;">{{ rel.judul|truncatewords:8 }}</div>
+              <small class="text-muted">{{ rel.tanggal_publish|date:"j M Y" }}</small>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="card-custom p-4">
+          <h3 style="font-family:var(--font-heading); font-size:1rem; margin-bottom:1rem;">Jelajahi</h3>
+          <a href="{% url 'artikel:index' %}" class="btn-outline-green w-100 justify-content-center mb-2">
+            <i class="bi bi-newspaper"></i> Semua Artikel
+          </a>
+          <a href="{% url 'potensi:index' %}" class="btn-outline-green w-100 justify-content-center">
+            <i class="bi bi-leaf"></i> Potensi Desa
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

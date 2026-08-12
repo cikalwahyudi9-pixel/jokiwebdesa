@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}{{ kategori.nama }} — Potensi{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'potensi:index' %}">Potensi</a></li>
+        <li class="breadcrumb-item active">{{ kategori.nama }}</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">{{ kategori.nama }}</h1>
+    {% if kategori.deskripsi_singkat %}
+    <p class="page-hero-sub">{{ kategori.deskripsi_singkat }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    {% if items %}
+    <div class="row g-4">
+      {% for item in items %}
+      <div class="col-md-6">
+        <div class="card-custom h-100">
+          {% if item.foto %}
+          <div class="card-img-wrap">
+            <img src="{{ item.foto.url }}" alt="{{ item.judul }}" loading="lazy">
+          </div>
+          {% endif %}
+          <div class="card-body-custom">
+            <h2 class="card-title-custom" style="-webkit-line-clamp:unset;">{{ item.judul }}</h2>
+            <div class="content-html mt-2">{{ item.deskripsi|safe }}</div>
+            {% if item.sumber_data %}
+            <small class="text-muted mt-2 d-block">
+              <i class="bi bi-info-circle"></i> Sumber: {{ item.sumber_data }}
+            </small>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="placeholder-content">
+      <span class="placeholder-label">DATA {{ kategori.nama|upper }} BELUM TERSEDIA</span>
+      <p class="mt-2 mb-0" style="font-size:0.88rem;">
+        Data potensi untuk kategori ini sedang dalam proses pengumpulan dan validasi.
+      </p>
+    </div>
+    {% endif %}
+
+    <div class="mt-4">
+      <a href="{% url 'potensi:index' %}" class="btn-outline-green">
+        <i class="bi bi-arrow-left"></i> Kembali ke Potensi
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

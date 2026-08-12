@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Video Profil — Desa Sumberagung{% endblock %}
+{% block meta_description %}Saksikan video profil Desa Sumberagung yang menampilkan keindahan alam, potensi lokal, dan kehidupan masyarakat.{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">Video Profil</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">Video Profil Desa</h1>
+    <p class="page-hero-sub">Mengenal Sumberagung melalui video</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+
+        {# ===== VIDEO PLAYER ===== #}
+        {% if profil.video_youtube_url %}
+        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;
+                    border-radius:var(--radius-lg); box-shadow:var(--shadow-lg); margin-bottom:2rem;">
+          <iframe
+            src="{{ profil.get_youtube_embed_url }}"
+            style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+            title="Video Profil Desa Sumberagung"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+        {% elif profil.video_file %}
+        <div style="margin-bottom:2rem;">
+          <video width="100%" controls
+                 style="border-radius:var(--radius-lg); box-shadow:var(--shadow-lg); display:block;">
+            <source src="{{ profil.video_file.url }}" type="video/mp4">
+            Browser Anda tidak mendukung pemutaran video.
+          </video>
+        </div>
+        {% else %}
+        <div class="placeholder-content mb-4" style="padding:5rem 2rem;">
+          <div class="placeholder-icon">🎬</div>
+          <span class="placeholder-label">VIDEO PROFIL BELUM TERSEDIA</span>
+          <p class="mt-2 mb-0" style="font-size:0.9rem;">
+            Video profil desa akan ditampilkan di sini setelah diatur oleh admin.
+          </p>
+        </div>
+        {% endif %}
+
+        {# ===== LINK VIDEO (jika tersedia) ===== #}
+        {% if profil.video_link %}
+        <div class="text-center mb-4">
+          <a href="{{ profil.video_link }}" target="_blank" rel="noopener noreferrer"
+             class="btn-green" style="display:inline-flex;">
+            <i class="bi bi-play-circle-fill"></i> Tonton di Platform Lain
+          </a>
+        </div>
+        {% endif %}
+
+        {# ===== SINOPSIS ===== #}
+        <div class="card-custom p-4 mb-4">
+          <h2 style="font-family:var(--font-heading); font-size:1.4rem; margin-bottom:0.5rem;">
+            Mengenal Desa Sumberagung
+          </h2>
+          <div class="divider"></div>
+          <p class="text-muted" style="line-height:1.8;">
+            {% if profil.video_sinopsis %}
+              {{ profil.video_sinopsis|linebreaksbr }}
+            {% elif profil.video_deskripsi %}
+              {{ profil.video_deskripsi|linebreaksbr }}
+            {% else %}
+              Video profil ini menampilkan keindahan alam, potensi lokal, kegiatan masyarakat,
+              dan berbagai cerita dari Desa Sumberagung, Kecamatan Weleri, Kabupaten Kendal.
+            {% endif %}
+          </p>
+        </div>
+
+        {# ===== HIGHLIGHT ===== #}
+        {% if profil.video_highlight %}
+        <div class="card-custom p-4 mb-4">
+          <h3 style="font-family:var(--font-heading); font-size:1.1rem; margin-bottom:1rem;">
+            <i class="bi bi-stars me-2" style="color:var(--color-primary);"></i>Yang Ada di Video Ini
+          </h3>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+            {% for poin in profil.video_highlight.splitlines %}
+            {% if poin.strip %}
+            <li style="display:flex; align-items:flex-start; gap:0.6rem; font-size:0.93rem;">
+              <i class="bi bi-check-circle-fill mt-1" style="color:var(--color-primary); flex-shrink:0;"></i>
+              <span>{{ poin }}</span>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        {# ===== INFORMASI PRODUKSI ===== #}
+        <div class="card-custom p-4">
+          <h3 style="font-family:var(--font-heading); font-size:1.1rem; margin-bottom:1rem;">
+            <i class="bi bi-info-circle me-2" style="color:var(--color-primary);"></i>Informasi Produksi
+          </h3>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div class="d-flex gap-2 align-items-center">
+                <i class="bi bi-geo-alt-fill text-primary-custom fs-5"></i>
+                <div>
+                  <small class="text-muted d-block">Lokasi</small>
+                  <strong>{{ desa_nama }}, {{ desa_kecamatan }}</strong>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="d-flex gap-2 align-items-center">
+                <i class="bi bi-camera-video-fill text-primary-custom fs-5"></i>
+                <div>
+                  <small class="text-muted d-block">Produksi</small>
+                  <strong>{{ profil.video_produksi|default:"Tim KKN Undip 2026" }}</strong>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="d-flex gap-2 align-items-center">
+                <i class="bi bi-calendar-fill text-primary-custom fs-5"></i>
+                <div>
+                  <small class="text-muted d-block">Tahun</small>
+                  <strong>{{ profil.video_tahun|default:"2026" }}</strong>
+                </div>
+              </div>
+            </div>
+            {% if profil.video_durasi %}
+            <div class="col-md-4">
+              <div class="d-flex gap-2 align-items-center">
+                <i class="bi bi-stopwatch-fill text-primary-custom fs-5"></i>
+                <div>
+                  <small class="text-muted d-block">Durasi</small>
+                  <strong>{{ profil.video_durasi }}</strong>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {% if profil.video_link %}
+            <div class="col-md-{% if profil.video_durasi %}8{% else %}12{% endif %}">
+              <div class="d-flex gap-2 align-items-center">
+                <i class="bi bi-link-45deg text-primary-custom fs-5"></i>
+                <div>
+                  <small class="text-muted d-block">Link Video</small>
+                  <a href="{{ profil.video_link }}" target="_blank" rel="noopener noreferrer"
+                     style="font-weight:600; color:var(--color-primary); word-break:break-all;">
+                    {{ profil.video_link|truncatechars:50 }}
+                  </a>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

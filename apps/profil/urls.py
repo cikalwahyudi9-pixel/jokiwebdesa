@@ -1,0 +1,8 @@
+from django.urls import path
+from . import views
+
+app_name = 'profil'
+
+urlpatterns = [
+    path('', views.profil_index, name='index'),
+]

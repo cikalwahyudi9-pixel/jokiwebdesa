@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}Artikel{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">Artikel</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">Artikel & Cerita</h1>
+    <p class="page-hero-sub">Informasi terkini seputar Desa Sumberagung</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    {# Search #}
+    <div class="row mb-4">
+      <div class="col-md-5">
+        <form method="get" class="d-flex gap-2">
+          <input type="text" name="q" value="{{ query }}" class="form-control"
+                 placeholder="Cari artikel..."
+                 style="border-radius:2rem; border-color:var(--color-border);">
+          {% if filter_kategori %}<input type="hidden" name="kategori" value="{{ filter_kategori }}">{% endif %}
+          <button type="submit" class="btn-green" style="white-space:nowrap;"><i class="bi bi-search"></i></button>
+        </form>
+      </div>
+    </div>
+
+    {# Filter Kategori #}
+    <div class="filter-bar">
+      <a href="{% url 'artikel:index' %}{% if query %}?q={{ query }}{% endif %}"
+         class="filter-btn {% if not filter_kategori %}active{% endif %}">Semua</a>
+      {% for kat in kategori_list %}
+      <a href="?kategori={{ kat.slug }}{% if query %}&q={{ query }}{% endif %}"
+         class="filter-btn {% if filter_kategori == kat.slug %}active{% endif %}">{{ kat.nama }}</a>
+      {% endfor %}
+    </div>
+
+    {% if artikel_list %}
+    <div class="row g-4">
+      {% for artikel in artikel_list %}
+      <div class="col-lg-3 col-md-6">
+        <article class="card-custom">
+          {% if artikel.thumbnail %}
+          <div class="card-img-wrap">
+            <a href="{% url 'artikel:detail' artikel.slug %}">
+              <img src="{{ artikel.thumbnail.url }}" alt="{{ artikel.judul }}" loading="lazy">
+            </a>
+          </div>
+          {% endif %}
+          <div class="card-body-custom">
+            {% if artikel.kategori %}<span class="card-category-badge">{{ artikel.kategori.nama }}</span>{% endif %}
+            <h2 class="card-title-custom">
+              <a href="{% url 'artikel:detail' artikel.slug %}" class="text-dark">{{ artikel.judul }}</a>
+            </h2>
+            {% if artikel.ringkasan %}<p style="font-size:0.85rem; color:var(--color-text-muted);">{{ artikel.ringkasan|truncatewords:15 }}</p>{% endif %}
+            <div class="card-meta">
+              <span><i class="bi bi-calendar3"></i> {{ artikel.tanggal_publish|date:"j M Y" }}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="placeholder-content">
+      <div class="placeholder-icon">📰</div>
+      <span class="placeholder-label">ARTIKEL BELUM TERSEDIA</span>
+      <p class="mt-2 mb-0" style="font-size:0.88rem;">
+        {% if query or filter_kategori %}Tidak ada artikel sesuai filter ini.
+        {% else %}Artikel akan ditambahkan oleh tim KKN.{% endif %}
+      </p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

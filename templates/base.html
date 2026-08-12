@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {# SEO Meta #}
+  <title>{% block title %}{{ site_name }}{% endblock %} — {{ site_tagline }}</title>
+  <meta name="description" content="{% block meta_description %}Jelajah Sumberagung — Portal informasi, potensi, UMKM, dan pemberdayaan masyarakat Desa Sumberagung, Kecamatan Weleri, Kabupaten Kendal, Jawa Tengah.{% endblock %}">
+  <meta name="keywords" content="Desa Sumberagung, Weleri, Kendal, UMKM Sumberagung, Potensi Desa, KKN Undip">
+  <meta name="author" content="Tim KKN Universitas Diponegoro 2026">
+
+  {# Open Graph #}
+  <meta property="og:title" content="{% block og_title %}{{ site_name }} — {{ site_tagline }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Satu ruang digital untuk mengenal Desa Sumberagung melalui profil, potensi, UMKM, kegiatan, dan hasil pemberdayaan masyarakat.{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
+
+  {# Google Analytics 4 — hanya aktif jika ID dikonfigurasi #}
+  {% if google_analytics_id %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ google_analytics_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ google_analytics_id }}');
+  </script>
+  {% endif %}
+
+  {# Favicon #}
+  {% load static %}
+  <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}" onerror="this.href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>'">
+
+  {# Google Fonts #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  {# Bootstrap 5 CSS #}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+  {# Bootstrap Icons #}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  {# Custom CSS #}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  {# ===== NAVBAR ===== #}
+  <nav class="navbar navbar-expand-xl navbar-jelajah" id="mainNavbar">
+    <div class="container-fluid px-3 px-xl-5">
+      <a class="navbar-brand navbar-brand-text" href="{% url 'pages:home' %}">
+        <i class="bi bi-tree"></i> Jelajah <span>Sumberagung</span>
+      </a>
+
+      <div class="d-flex align-items-center gap-2 ms-auto order-xl-last">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarMain" aria-controls="navbarMain"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.namespace == 'pages' and request.resolver_match.url_name == 'home' %}active{% endif %}"
+               href="{% url 'pages:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.namespace == 'profil' %}active{% endif %}"
+               href="{% url 'profil:index' %}">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.namespace == 'potensi' %}active{% endif %}"
+               href="{% url 'potensi:index' %}">Potensi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.namespace == 'umkm' %}active{% endif %}"
+               href="{% url 'umkm:index' %}">UMKM</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.namespace == 'insight' %}active{% endif %}"
+               href="{% url 'insight:index' %}">Insight</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.namespace == 'artikel' %}active{% endif %}"
+               href="{% url 'artikel:index' %}">Artikel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.namespace == 'kegiatan' %}active{% endif %}"
+               href="{% url 'kegiatan:index' %}">Kegiatan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.namespace == 'galeri' %}active{% endif %}"
+               href="{% url 'galeri:index' %}">Galeri</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.namespace == 'program' %}active{% endif %}"
+               href="{% url 'program:index' %}">Program</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.namespace == 'edukasi' %}active{% endif %}"
+               href="{% url 'edukasi:index' %}">Edukasi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.namespace == 'pages' and request.resolver_match.url_name == 'tentang' %}active{% endif %}"
+               href="{% url 'pages:tentang' %}">Tentang</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  {# ===== MAIN CONTENT ===== #}
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  {# ===== FOOTER ===== #}
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand"><i class="bi bi-tree"></i> Jelajah <span>Sumberagung</span></div>
+          <p class="footer-tagline">{{ site_tagline }}</p>
+          <p style="font-size:0.85rem; color:rgba(255,255,255,0.6);">
+            <i class="bi bi-geo-alt-fill me-1"></i>
+            {{ desa_nama }}, {{ desa_kecamatan }},<br>
+            {{ desa_kabupaten }}, {{ desa_provinsi }}
+          </p>
+          {# Media Sosial #}
+          {% if profil %}
+          <div class="d-flex gap-2 flex-wrap mt-2" style="font-size:1.25rem;">
+            {% if profil.sosmed_instagram %}
+            <a href="{{ profil.sosmed_instagram }}" target="_blank" rel="noopener noreferrer"
+               style="color:rgba(255,255,255,0.65); transition:color 0.2s;" title="Instagram"
+               onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">
+              <i class="bi bi-instagram"></i>
+            </a>
+            {% endif %}
+            {% if profil.sosmed_facebook %}
+            <a href="{{ profil.sosmed_facebook }}" target="_blank" rel="noopener noreferrer"
+               style="color:rgba(255,255,255,0.65); transition:color 0.2s;" title="Facebook"
+               onmouseover="this.style.color='#1877F2'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">
+              <i class="bi bi-facebook"></i>
+            </a>
+            {% endif %}
+            {% if profil.sosmed_youtube %}
+            <a href="{{ profil.sosmed_youtube }}" target="_blank" rel="noopener noreferrer"
+               style="color:rgba(255,255,255,0.65); transition:color 0.2s;" title="YouTube"
+               onmouseover="this.style.color='#FF0000'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">
+              <i class="bi bi-youtube"></i>
+            </a>
+            {% endif %}
+            {% if profil.sosmed_tiktok %}
+            <a href="{{ profil.sosmed_tiktok }}" target="_blank" rel="noopener noreferrer"
+               style="color:rgba(255,255,255,0.65); transition:color 0.2s;" title="TikTok"
+               onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">
+              <i class="bi bi-tiktok"></i>
+            </a>
+            {% endif %}
+            {% if profil.sosmed_whatsapp %}
+            <a href="https://wa.me/{{ profil.sosmed_whatsapp }}" target="_blank" rel="noopener noreferrer"
+               style="color:rgba(255,255,255,0.65); transition:color 0.2s;" title="WhatsApp"
+               onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+            {% endif %}
+          </div>
+          {% endif %}
+          <div class="footer-disclaimer mt-3">
+            <i class="bi bi-info-circle me-1"></i>
+            {{ disclaimer_resmi }}
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-6">
+          <h6 class="footer-heading">Jelajahi</h6>
+          <ul class="footer-links">
+            <li><a href="{% url 'profil:index' %}">Profil Desa</a></li>
+            <li><a href="{% url 'potensi:index' %}">Potensi</a></li>
+            <li><a href="{% url 'umkm:index' %}">UMKM Mitra</a></li>
+            <li><a href="{% url 'galeri:index' %}">Galeri</a></li>
+            <li><a href="{% url 'pages:video_profil' %}">Video Profil</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-6">
+          <h6 class="footer-heading">Informasi</h6>
+          <ul class="footer-links">
+            <li><a href="{% url 'artikel:index' %}">Artikel</a></li>
+            <li><a href="{% url 'kegiatan:index' %}">Kegiatan</a></li>
+            <li><a href="{% url 'program:index' %}">Program</a></li>
+            <li><a href="{% url 'edukasi:index' %}">Edukasi</a></li>
+            <li><a href="{% url 'insight:index' %}">Insight</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <h6 class="footer-heading">Tentang Website</h6>
+          <p style="font-size:0.85rem; color:rgba(255,255,255,0.6); line-height:1.7;">
+            Jelajah Sumberagung adalah platform informasi mandiri yang dikembangkan
+            sebagai luaran program KKN Universitas Diponegoro 2026 di Desa Sumberagung.
+          </p>
+          <a href="{% url 'pages:tentang' %}" style="font-size:0.82rem; color:#FFD54F;">
+            Selengkapnya <i class="bi bi-arrow-right"></i>
+          </a>
+          <div class="mt-3">
+            <a href="{% url 'pages:kontribusi' %}" style="font-size:0.82rem; color:rgba(255,255,255,0.6);">
+              <i class="bi bi-chat-heart me-1"></i>Kirim Cerita / Masukan
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 Jelajah Sumberagung.</span>
+        <span class="mx-2">·</span>
+        <span>Dikembangkan oleh Tim KKN Universitas Diponegoro</span>
+        <span class="mx-2">·</span>
+        <a href="{% url 'pages:tentang' %}" style="color:rgba(255,255,255,0.4);">Platform Informasi Mandiri</a>
+      </div>
+    </div>
+  </footer>
+
+  {# ===== LIGHTBOX OVERLAY ===== #}
+  <div class="lightbox-overlay" id="lightboxOverlay">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Tutup">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    <img src="" alt="" class="lightbox-img" id="lightboxImg">
+  </div>
+
+  {# Bootstrap JS #}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  {# Main JS #}
+  <script src="{% static 'js/main.js' %}"></script>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

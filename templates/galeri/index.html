@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Galeri{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">Galeri</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">Galeri Foto</h1>
+    <p class="page-hero-sub">Dokumentasi kegiatan dan potensi Desa Sumberagung</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    {# Filter Kategori #}
+    <div class="filter-bar">
+      <a href="{% url 'galeri:index' %}" class="filter-btn {% if not filter_kategori %}active{% endif %}">Semua</a>
+      {% for kat in kategori_list %}
+      <a href="?kategori={{ kat.slug }}" class="filter-btn {% if filter_kategori == kat.slug %}active{% endif %}">{{ kat.nama }}</a>
+      {% endfor %}
+    </div>
+
+    {% if galeri_list %}
+    <div class="galeri-grid">
+      {% for item in galeri_list %}
+      <div class="galeri-item"
+           data-lightbox="{{ item.foto.url }}"
+           data-lightbox-caption="{{ item.judul }}">
+        <img src="{{ item.foto.url }}" alt="{{ item.judul }}" loading="lazy">
+        <div class="galeri-item-overlay">
+          <span class="galeri-item-title">{{ item.judul }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="placeholder-content" style="padding:5rem 2rem;">
+      <div class="placeholder-icon">📷</div>
+      <span class="placeholder-label">FOTO BELUM TERSEDIA</span>
+      <p class="mt-2 mb-0" style="font-size:0.88rem;">
+        {% if filter_kategori %}Belum ada foto di kategori ini.
+        {% else %}Galeri foto akan diisi setelah foto terkumpul dari tim KKN.{% endif %}
+      </p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

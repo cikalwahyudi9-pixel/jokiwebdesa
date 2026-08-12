@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block title %}Edukasi & Download{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+        <li class="breadcrumb-item active">Edukasi</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero-title">Pusat Edukasi</h1>
+    <p class="page-hero-sub">Unduh materi edukasi secara gratis</p>
+  </div>
+</section>
+
+<section class="section-py">
+  <div class="container">
+    {# Filter #}
+    <div class="filter-bar">
+      <a href="{% url 'edukasi:index' %}" class="filter-btn {% if not filter_kategori %}active{% endif %}">Semua</a>
+      {% for kat in kategori_list %}
+      <a href="?kategori={{ kat.slug }}" class="filter-btn {% if filter_kategori == kat.slug %}active{% endif %}">
+        {% if kat.ikon %}<i class="{{ kat.ikon }} me-1"></i>{% endif %}{{ kat.nama }}
+      </a>
+      {% endfor %}
+    </div>
+
+    {% if items %}
+    <div class="row g-4">
+      {% for item in items %}
+      <div class="col-md-6 col-lg-4">
+        <div class="card-custom p-4 h-100 d-flex flex-column">
+          <div class="d-flex gap-3 align-items-start mb-3">
+            {% if item.thumbnail %}
+            <img src="{{ item.thumbnail.url }}" alt="{{ item.judul }}"
+                 style="width:56px; height:56px; object-fit:cover; border-radius:0.75rem; flex-shrink:0;" loading="lazy">
+            {% else %}
+            <div style="width:56px; height:56px; background:rgba(46,125,50,0.1); border-radius:0.75rem;
+                        display:flex; align-items:center; justify-content:center; font-size:1.75rem; flex-shrink:0;">
+              📄
+            </div>
+            {% endif %}
+            <div class="d-flex align-items-center flex-wrap gap-1">
+              {% if item.kategori %}<span class="card-category-badge">{{ item.kategori.nama }}</span>{% endif %}
+              {% if item.get_format %}
+              <div style="display:inline-block; font-size:0.7rem; font-weight:700; background:#E3F2FD; color:#1565C0; padding:0.15rem 0.5rem; border-radius:0.25rem;">
+                {{ item.get_format }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+          {# Judul #}
+          <h2 style="font-family:var(--font-heading); font-size:0.98rem; margin-bottom:0.5rem;">{{ item.judul }}</h2>
+
+          {# Deskripsi #}
+          {% if item.deskripsi %}
+          <p style="font-size:0.82rem; color:var(--color-text-muted); flex-grow:1; line-height:1.6;">{{ item.deskripsi|truncatewords:25 }}</p>
+          {% else %}
+          <div style="flex-grow:1;"></div>
+          {% endif %}
+
+          {# Meta info: pembuat, program, tanggal, ukuran #}
+          <div style="font-size:0.78rem; color:var(--color-text-muted); margin-bottom:1rem; margin-top:0.75rem; border-top:1px solid var(--color-border); padding-top:0.75rem;">
+            <div class="d-flex flex-column gap-1">
+              {% if item.pembuat %}
+              <span><i class="bi bi-person-fill me-1" style="color:var(--color-primary);"></i><strong>Pembuat:</strong> {{ item.pembuat }}</span>
+              {% endif %}
+              {% if item.program_asal %}
+              <span><i class="bi bi-diagram-3-fill me-1" style="color:var(--color-primary);"></i><strong>Program:</strong> {{ item.program_asal }}</span>
+              {% endif %}
+              <div class="d-flex gap-3 flex-wrap mt-1">
+                {% if item.tanggal %}
+                <span><i class="bi bi-calendar3 me-1"></i>{{ item.tanggal|date:"j M Y" }}</span>
+                {% endif %}
+                {% if item.get_ukuran %}
+                <span><i class="bi bi-hdd me-1"></i>{{ item.get_ukuran }}</span>
+                {% endif %}
+                <span><i class="bi bi-download me-1"></i>{{ item.jumlah_download }}x diunduh</span>
+              </div>
+            </div>
+          </div>
+
+          {# Tombol Download #}
+          <a href="{% url 'edukasi:download' item.slug %}" class="btn-green justify-content-center">
+            <i class="bi bi-download"></i> Unduh Materi
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="placeholder-content" style="padding:5rem 2rem;">
+      <div class="placeholder-icon">📚</div>
+      <span class="placeholder-label">MATERI BELUM TERSEDIA</span>
+      <p class="mt-2 mb-0" style="font-size:0.88rem;">
+        Materi edukasi akan ditambahkan oleh masing-masing tim program KKN.
+      </p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
